@@ -54,10 +54,10 @@
 
 			}
 			$('#Results').empty();
-			$('<p>yin count: '+yin+' - probability: '+yin/(count*6)*100+'%</p><br />').appendTo('#Results');
-			$('<p>yin-change count: '+yinChange+' - probability: '+yinChange/(count*6)*100+'%</p><br />').appendTo('#Results');
-			$('<p>yang count: '+yang+' - probability: '+yang/(count*6)*100+'%</p><br />').appendTo('#Results');
-			$('<p>yang-change count: '+yangChange+' - probability: '+yangChange/(count*6)*100+'%</p><br />').appendTo('#Results');
+			$('<p>yin count: '+yin+' - probability: '+(yin/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+			$('<p>yin-change count: '+yinChange+' - probability: '+(yinChange/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+			$('<p>yang count: '+yang+' - probability: '+(yang/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+			$('<p>yang-change count: '+yangChange+' - probability: '+(yangChange/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
 		});
 </script>
 </body>
