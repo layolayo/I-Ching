@@ -10,11 +10,17 @@ var CountValue3;
 var LineValue;
 var asciipic;
 
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+}
+
 var DivideStalks = function(YarrowStalks){
 // Divide 49 stalks into eastpile westpile
 // Subtract one from westpile put in handpile
 
-WestPile = Math.floor((Math.random() * YarrowStalks) + 1);
+WestPile = getRandomInt(2, YarrowStalks); //Note that westpile split cannot be 1 or TotalYarrowStalks as both east and west piles cannot ever be 0
 EastPile = YarrowStalks - WestPile;
 WestPile = WestPile - 1;
 HandPile = 1;
