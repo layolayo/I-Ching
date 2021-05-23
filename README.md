@@ -1,6 +1,6 @@
 # I-Ching
 
-[This is a revision of Brian's version, where we include the notion that at least one stick must be drawn in the split, as per Kennedy's interpretation. This does change the probabilities. A page (probability.html) is available which will calculate these probabilities for you, based upon a set # of iterations] 
+[This is a revision of Brian's version, where we include the notion that at least one stick must be drawn in the split, as per Kennedy's interpretation. This does change the probabilities. A page (probability.html) is available which will calculate these probabilities for you, based upon a set # of iterations - this can be adjusted by changing the value in : var count = 1000;] 
 
 A programmatic replication of the Yarrow Stalk Method of I-Ching Divination
 
