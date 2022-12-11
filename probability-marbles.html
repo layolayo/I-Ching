@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>I-Ching Yarrow Cast Demo</title>
+	<meta name="generator" content="BBEdit 11.0" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="marble-sort.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" style="background-color:#F8F8F8;" class="text-center">
+<h1>Demo of 38 Marbles Probability </h1>
+<p>If you ever cast the I-Ching, chances are you did it using the three-coin method. Here is a probability version of using the Marbles in a bag (38 marbles consisting of : 11 White (Yang), 8 White/black (Yang-changing), 17 Black (Yin), 2 Black/White (Yin-changing))
+<div id="Results" class="text-center"></div>
+<div id="Hexagram" class="text-center"></div>
+<button type="button" class="cast">Click Me!</button>
+</div> <!-- Content -->
+</div> <!-- Row -->
+</div> <!-- Container -->
+<script>
+	$('body').on('click', '.cast', function(e)
+		{
+			$('#Hexagram').empty();
+			var count = 100000;
+			var yin = 0;
+			var yang = 0;
+			var yinChange = 0;
+			var yangChange = 0;
+			var i;
+			for (i = 0; i<count; i++)
+			{
+				for (j = 1; j<7; j++){
+					LineCast();
+					//$('<code>Chosen:'+Chosen+'</code><br />').appendTo('#Hexagram');
+					//$('<code>'+asciipic+'</code><br />').prependTo('#Hexagram');
+					switch (asciipic) {
+						case '===&nbsp;o&nbsp;===':
+						yinChange++
+						break;
+						case '====x====':
+						yangChange++;
+						break;
+						case '=========':
+						yang++;
+						break;
+						case '===&nbsp;&nbsp;&nbsp;===':
+						yin++;
+						break;
+					}
+				}
+				//$('<code> </code><br />').prependTo('#Hexagram');
+
+			}
+			$('#Results').empty();
+			$('<p>yin count: '+yin+' - probability: '+(yin/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+			$('<p>yin-change count: '+yinChange+' - probability: '+(yinChange/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+			$('<p>yang count: '+yang+' - probability: '+(yang/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+			$('<p>yang-change count: '+yangChange+' - probability: '+(yangChange/(count*6)*100).toFixed(2)+'%</p><br />').appendTo('#Results');
+		});
+</script>
+</body>
+</html>
