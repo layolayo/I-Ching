@@ -41,10 +41,10 @@ Because physical hands cannot hold zero stalks, real-world yarrow probabilities 
 
 | Line Type | Symbol | Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy's Revised (38 Bag) | Accuracy Error |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: |
-| **Young Yin (8)** | ⚋ | Unchanging Yin | 43.75% (14/32) | **44.84%** | **44.74%** (17/38) | **< 0.10%** |
-| **Young Yang (7)** | ⚊ | Unchanging Yang | 31.25% (10/32) | **28.87%** | **28.95%** (11/38) | **< 0.08%** |
-| **Old Yang (9)** | ⚊ ○ | Changing Yang → Yin | 18.75% (6/32) | **21.12%** | **21.05%** (8/38) | **< 0.07%** |
-| **Old Yin (6)** | ⚋ ✕ | Changing Yin → Yang | 6.25% (2/32) | **5.17%** | **5.26%** (2/38) | **< 0.09%** |
+| **Young Yin (8)** | ━━━ ━━━ | Unchanging Yin | 43.75% (14/32) | **44.84%** | **44.74%** (17/38) | **< 0.10%** |
+| **Young Yang (7)** | ━━━━━━━ | Unchanging Yang | 31.25% (10/32) | **28.87%** | **28.95%** (11/38) | **< 0.08%** |
+| **Old Yang (9)** | ━━━○━━━ | Changing Yang → Yin | 18.75% (6/32) | **21.12%** | **21.05%** (8/38) | **< 0.07%** |
+| **Old Yin (6)** | ━━━✕━━━ | Changing Yin → Yang | 6.25% (2/32) | **5.17%** | **5.26%** (2/38) | **< 0.09%** |
 
 The 32-marble bag was abstract paper theory; **38 marbles is what physical yarrow stalks actually do in human hands**.
 
