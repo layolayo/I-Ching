@@ -12,10 +12,10 @@ For centuries, the traditional 18-pass yarrow stalk ritual preserved by Song Dyn
 In 1974, famed mathematician **Martin Gardner** proved in *Scientific American* that three coins distort the oracle. Coins generate equal 12.5% chances for both changing lines (Old Yang and Old Yin). In authentic Daoist cosmology, this is fundamentally wrong: **Yang** (creative fire, initiative) is dynamic and quick to burn out and transform; whereas **Yin** (earth, darkness, receptivity) is steadfast, cold, and slow to alter course. 
 
 Gardner derived the first modern mathematical model of stalks: a **16-branch matrix** where restless Yang changes three times more readily than Yin:
-* **Old Yin (6)**: $1/16 = 6.25\%$
-* **Young Yang (7)**: $5/16 = 31.25\%$
-* **Young Yin (8)**: $7/16 = 43.75\%$
-* **Old Yang (9)**: $3/16 = 18.75\%$
+* **Old Yin (6)**: 1/16 = 6.25%
+* **Young Yang (7)**: 5/16 = 31.25%
+* **Young Yin (8)**: 7/16 = 43.75%
+* **Old Yang (9)**: 3/16 = 18.75%
 
 To reproduce this without arithmetic, early practitioners created a **32-marble bag** (doubling the 16-ratio: 14 Black, 10 White, 6 White-Speckled, 2 Black-Speckled).
 
@@ -27,7 +27,7 @@ In his 2006 work *Briefing Leaders*, researcher **Andrew Kennedy** discovered th
 Real human hands do not divide stalks on a chalkboard:
 1. When you split 49 stalks into your left and right hands, **neither hand can ever be empty**.
 2. You immediately take 1 stalk from your right hand to hold between your fingers—meaning the right hand **must hold at least 2 stalks initially**, or it would be left empty.
-3. Therefore, dividing 49 stalks between two physical hands creates **47 possible physical split points** ($2 \le \text{West} \le 48$).
+3. Therefore, dividing 49 stalks between two physical hands creates **47 possible physical split points** (2 ≤ West ≤ 48).
 4. **47 is a prime number**—it does not divide into clean chalkboard quarters!
 5. On subsequent passes (dividing 44, 40, 36, or 32 stalks), the same physical hand boundaries apply.
 
@@ -35,16 +35,16 @@ Real human hands do not divide stalks on a chalkboard:
 
 ### 3. Why 38 Marbles Replaces 32 (The Global Optimum)
 Because physical hands cannot hold zero stalks, real-world yarrow probabilities subtly shift away from Gardner's chalkboard 16/32 model:
-* **The 32-Marble Bag is Inaccurate**: Line probabilities in the 32-marble bag are off by as much as **2.4% on every single line** (Young Yang is over-represented by $+2.38\%$, and Old Yang is under-represented by $-2.37\%$).
-* **The 38-Marble Bag is Near-Perfect**: Calculating the exact cumulative probability across all physical hand splits reveals that the true odds match a pouch of **38 marbles to within less than a tenth of one percent ($< 0.09\%$)**!
+* **The 32-Marble Bag is Inaccurate**: Line probabilities in the 32-marble bag are off by as much as **2.4% on every single line** (Young Yang is over-represented by +2.38%, and Old Yang is under-represented by -2.37%).
+* **The 38-Marble Bag is Near-Perfect**: Calculating the exact cumulative probability across all physical hand splits reveals that the true odds match a pouch of **38 marbles to within less than a tenth of one percent (< 0.09%)**!
 * **Global Mathematical Proof**: An exhaustive mathematical search across all possible pouch sizes between 10 and 100 objects proves that **38 is the #1 global optimum in existence**.
 
-| Line Type | Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy (38 Bag) | Accuracy Error |
-| :--- | :--- | :---: | :---: | :---: | :---: |
-| **Young Yin (8)** | Unchanging Yin | $43.75\%$ (14/32) | **$44.84\%$** | **$44.74\%$** (17/38) | **$< 0.10\%$** |
-| **Young Yang (7)** | Unchanging Yang | $31.25\%$ (10/32) | **$28.87\%$** | **$28.95\%$** (11/38) | **$< 0.08\%$** |
-| **Old Yang (9)** | Changing Yang $\rightarrow$ Yin | $18.75\%$ (6/32) | **$21.12\%$** | **$21.05\%$** (8/38) | **$< 0.07\%$** |
-| **Old Yin (6)** | Changing Yin $\rightarrow$ Yang | $6.25\%$ (2/32) | **$5.17\%$** | **$5.26\%$** (2/38) | **$< 0.09\%$** |
+| Line Type | Symbol | Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy (38 Bag) | Accuracy Error |
+| :--- | :---: | :--- | :---: | :---: | :---: | :---: |
+| **Young Yin (8)** | ⚋ | Unchanging Yin | 43.75% (14/32) | **44.84%** | **44.74%** (17/38) | **< 0.10%** |
+| **Young Yang (7)** | ⚊ | Unchanging Yang | 31.25% (10/32) | **28.87%** | **28.95%** (11/38) | **< 0.08%** |
+| **Old Yang (9)** | ⚊ ○ | Changing Yang → Yin | 18.75% (6/32) | **21.12%** | **21.05%** (8/38) | **< 0.07%** |
+| **Old Yin (6)** | ⚋ ✕ | Changing Yin → Yang | 6.25% (2/32) | **5.17%** | **5.26%** (2/38) | **< 0.09%** |
 
 The 32-marble bag was abstract paper theory; **38 marbles is what physical yarrow stalks actually do in human hands**.
 
