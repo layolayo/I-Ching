@@ -2,6 +2,10 @@
 
 > **Andrew Kennedy's Revised Yarrow Algorithm**: A rigorous mathematical revision of the classical Yarrow Stalk sorting algorithm, accounting for physical hand partition boundaries and introducing the **38-Marble Divination Method**.
 
+<p align="center">
+  <img src="preview.png" alt="I-Ching: Stalks & Sacred Marbles" width="100%" />
+</p>
+
 ---
 
 ## The 38-Marble Method: Historical Evolution & Mathematical Reality
