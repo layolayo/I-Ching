@@ -1100,8 +1100,8 @@
         </div>
 
         <div class="lore-section">
-          <h3>3. Real Physical Hands: Andrew Kennedy (2006)</h3>
-          <p>In 2006, researcher <strong>Andrew Kennedy</strong> (author of <em>Briefing Leaders</em>) made a profound breakthrough: Gardner's 1974 math was idealized chalkboard theory. Gardner assumed stalks behave like pure abstract numbers that divide evenly into quarters. But real human hands cannot divide stalks on a chalkboard:</p>
+          <h3>3. Andrew Kennedy's Revised Yarrow Algorithm (2006)</h3>
+          <p>In 2006, researcher <strong>Andrew Kennedy</strong> published his revised yarrow algorithm in <em>Briefing Leaders: A new look at the I Ching and the Tao De Ching</em> (Gravity Publishing, 2006), making a profound breakthrough: Gardner's 1974 math was idealized chalkboard theory. Gardner assumed stalks behave like pure abstract numbers that divide evenly into quarters. But real human hands cannot divide stalks on a chalkboard:</p>
           <ul style="margin: 8px 0 8px 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
             <li>When you divide 49 stalks into your left and right hands, <strong>neither hand can ever be empty</strong>.</li>
             <li>You immediately remove 1 stalk from the right hand to tuck between your left fingers—meaning the right hand must hold at least 2 stalks initially, or it would be left empty.</li>
@@ -1187,7 +1187,7 @@
   </main>
 
   <footer>
-    <p>Authentic 50 Yarrow Stalks & 38 Marbles Pouch (Kennedy Method) · Classical Wilhelm / Baynes Translation</p>
+    <p>Authentic 50 Yarrow Stalks & 38 Marbles Pouch (Andrew Kennedy's Revised Yarrow Algorithm) · Classical Wilhelm / Baynes Translation</p>
     <p style="margin-top: 4px;">Shortcut: Press <kbd style="background:#222c3d;padding:2px 6px;border-radius:4px;border:1px solid #334155;">Space</kbd> to cast next line · Press <kbd style="background:#222c3d;padding:2px 6px;border-radius:4px;border:1px solid #334155;">R</kbd> to reset.</p>
   </footer>
 
@@ -1470,7 +1470,7 @@
           detailsContent.innerHTML = html;
         } else {
           // Yarrow Stalk Method
-          detailsTitle.innerHTML = '<span>🌿</span> Yarrow Stalk Division (Kennedy Split) — Line ' + line.lineNumber + ' (' + line.title + ')';
+          detailsTitle.innerHTML = "<span>🌿</span> Yarrow Stalk Division (Andrew Kennedy's Revised Algorithm) — Line " + line.lineNumber + ' (' + line.title + ')';
           detailsContent.innerHTML = [
             'Pass 1 (49 stalks): Hand remainder = ' + line.passes[0].hand + '  ➔  Count Value: ' + line.passes[0].count,
             'Pass 2 (' + line.passes[0].stalksLeft + ' stalks): Hand remainder = ' + line.passes[1].hand + '  ➔  Count Value: ' + line.passes[1].count,
@@ -1683,7 +1683,7 @@
       function copyReading() {
         if (!state.consultation || !state.consultation.primary) return;
         var p = state.consultation.primary;
-        var methodLabel = (state.method === 'yarrow') ? 'Authentic 50 Yarrow Stalks (Kennedy Physical Hands)' : '38 Marbles Pouch (Kennedy Method)';
+        var methodLabel = (state.method === 'yarrow') ? "Authentic 50 Yarrow Stalks (Andrew Kennedy's Revised Yarrow Algorithm)" : "38 Marbles Pouch (Andrew Kennedy's Revised Yarrow Algorithm)";
         var text = '☯ I-Ching Oracle Reading (' + methodLabel + ') ☯\n\n';
         if (state.inquiryText && state.inquiryText.trim() !== '') {
           text += 'Inquiry: "' + state.inquiryText.trim() + '"\n\n';

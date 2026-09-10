@@ -1,6 +1,6 @@
 # I-Ching: Stalks & Sacred Marbles Divination Engine
 
-> **The Kennedy Interpretation**: A rigorous mathematical revision of the classical Yarrow Stalk sorting algorithm, accounting for physical hand partition boundaries and introducing the **38-Marble Divination Method**.
+> **Andrew Kennedy's Revised Yarrow Algorithm**: A rigorous mathematical revision of the classical Yarrow Stalk sorting algorithm, accounting for physical hand partition boundaries and introducing the **38-Marble Divination Method**.
 
 ---
 
@@ -21,8 +21,8 @@ To reproduce this without arithmetic, early practitioners created a **32-marble 
 
 ---
 
-### 2. The 2006 Physical Hands Reality (Andrew Kennedy)
-In his 2006 work *Briefing Leaders*, researcher **Andrew Kennedy** discovered that Gardner's 1974 model was idealized "chalkboard math." Gardner had treated stalks like pure theoretical numbers that divide evenly into quarters. 
+### 2. Andrew Kennedy's Revised Yarrow Algorithm (2006)
+In his 2006 work *Briefing Leaders: A new look at the I Ching and the Tao De Ching* (Gravity Publishing), researcher **Andrew Kennedy** discovered that Gardner's 1974 model was idealized "chalkboard math." Gardner had treated stalks like pure theoretical numbers that divide evenly into quarters. 
 
 Real human hands do not divide stalks on a chalkboard:
 1. When you split 49 stalks into your left and right hands, **neither hand can ever be empty**.
@@ -39,7 +39,7 @@ Because physical hands cannot hold zero stalks, real-world yarrow probabilities 
 * **The 38-Marble Bag is Near-Perfect**: Calculating the exact cumulative probability across all physical hand splits reveals that the true odds match a pouch of **38 marbles to within less than a tenth of one percent (< 0.09%)**!
 * **Global Mathematical Proof**: An exhaustive mathematical search across all possible pouch sizes between 10 and 100 objects proves that **38 is the #1 global optimum in existence**.
 
-| Line Type | Symbol | Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy (38 Bag) | Accuracy Error |
+| Line Type | Symbol | Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy's Revised (38 Bag) | Accuracy Error |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: |
 | **Young Yin (8)** | ⚋ | Unchanging Yin | 43.75% (14/32) | **44.84%** | **44.74%** (17/38) | **< 0.10%** |
 | **Young Yang (7)** | ⚊ | Unchanging Yang | 31.25% (10/32) | **28.87%** | **28.95%** (11/38) | **< 0.08%** |
@@ -229,5 +229,13 @@ Update: Wikipedia sums up all that blather very succinctly:
 <td style="text-align:center;"><s><b>--------</b></s></td>
 </tr>
 </table>
+
+---
+
+## References
+
+* **Kennedy, Andrew** (2006). *Briefing Leaders: A new look at the I Ching and the Tao De Ching*. Gravity Publishing. ISBN: 978-0955355608.
+* **Gardner, Martin** (1974). "Mathematical Games: The Combinatorial Properties of the I Ching." *Scientific American*, 230(1), 108–113.
+* **Zhu Xi** (1186 CE). *Yixue Qimeng* (易學啟蒙, *Introduction to the Study of the I Ching*).
 
 If you enjoyed this, you can <a href="https://www.buymeacoffee.com/brianfit">buy me a coffee!</a> (Did I mention I really like coffee)
