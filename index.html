@@ -1861,31 +1861,68 @@
             if (isTransformed && state.consultation && state.consultation.nuclearTransition) {
               var nt = state.consultation.nuclearTransition;
               cHtml += '  <div class="nuclear-transition-card" style="margin-top: 10px; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(245, 158, 11, 0.35); background: rgba(0, 0, 0, 0.28);">';
-              cHtml += '    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:6px;">';
-              cHtml += '      <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:700; color:var(--gold);">';
-              cHtml += '        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--gold);"></span>';
-              cHtml += '        Interior Core Transition (X ➔ Y Engine Matrix)';
-              cHtml += '      </div>';
+              cHtml += '    <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:700; color:var(--gold); margin-bottom:4px;">';
+              cHtml += '      <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--gold);"></span>';
+              cHtml += '      Interior Core Transition Matrix (X ➔ Y)';
+              cHtml += '    </div>';
+              cHtml += '    <div style="margin-bottom:10px;">';
               cHtml += '      <span style="font-size:0.7rem; font-weight:700; padding:2px 7px; border-radius:4px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:var(--gold);">' + nt.badge + '</span>';
               cHtml += '    </div>';
-              cHtml += '    <div style="font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:4px;">' + nt.headline + '</div>';
+
+              // Visual State X ➔ State Y Matrix Box
+              cHtml += '    <div style="display:flex; align-items:stretch; gap:8px; margin-bottom:12px; flex-wrap:wrap;">';
+              // State X Box
+              cHtml += '      <div style="flex:1 1 170px; background:rgba(0,0,0,0.25); border:1px solid rgba(56,189,248,0.3); border-radius:6px; padding:8px 10px;">';
+              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--accent); letter-spacing:0.5px; margin-bottom:4px;">STATE X · INITIAL CORE</div>';
+              cHtml += '        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">';
+              cHtml += '          <div style="font-size:1.6rem; line-height:1; color:var(--accent);">' + nt.fromHex.unicode + '</div>';
+              cHtml += '          <div>';
+              cHtml += '            <div style="font-size:0.85rem; font-weight:700; color:var(--text); line-height:1.2;">#' + nt.fromHex.number + ' ' + nt.fromHex.english + '</div>';
+              cHtml += '            <div style="font-size:0.72rem; color:var(--text-muted);">' + nt.fromHex.chinese + ' (' + nt.fromHex.pinyin + ')</div>';
+              cHtml += '          </div>';
+              cHtml += '        </div>';
+              cHtml += '        <div style="font-size:0.72rem; font-weight:700; color:var(--accent);">' + nt.fromGate.name + '</div>';
+              cHtml += '      </div>';
+
+              // Arrow connector
+              cHtml += '      <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; padding: 0 4px;">';
+              cHtml += '        <div style="font-size:1.3rem; font-weight:700; color:var(--gold); line-height:1;">➔</div>';
+              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--gold); margin-top:2px;">' + nt.changingLinesLabel + '</div>';
+              cHtml += '      </div>';
+
+              // State Y Box
+              cHtml += '      <div style="flex:1 1 170px; background:rgba(0,0,0,0.25); border:1px solid rgba(245,158,11,0.4); border-radius:6px; padding:8px 10px;">';
+              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--gold); letter-spacing:0.5px; margin-bottom:4px;">STATE Y · RELATING CORE</div>';
+              cHtml += '        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">';
+              cHtml += '          <div style="font-size:1.6rem; line-height:1; color:var(--gold);">' + nt.toHex.unicode + '</div>';
+              cHtml += '          <div>';
+              cHtml += '            <div style="font-size:0.85rem; font-weight:700; color:var(--text); line-height:1.2;">#' + nt.toHex.number + ' ' + nt.toHex.english + '</div>';
+              cHtml += '            <div style="font-size:0.72rem; color:var(--text-muted);">' + nt.toHex.chinese + ' (' + nt.toHex.pinyin + ')</div>';
+              cHtml += '          </div>';
+              cHtml += '        </div>';
+              cHtml += '        <div style="font-size:0.72rem; font-weight:700; color:var(--gold);">' + nt.toGate.name + '</div>';
+              cHtml += '      </div>';
+              cHtml += '    </div>';
+
+              cHtml += '    <div style="font-size:0.86rem; font-weight:700; color:var(--text); margin-bottom:6px; line-height:1.3;">' + nt.headline + '</div>';
               cHtml += '    <div style="font-size:0.8rem; line-height:1.45; color:var(--text-muted);">' + nt.description + '</div>';
               cHtml += '  </div>';
             }
 
             // Nuclear Core Card (Hidden Core · 互卦)
             if (hex.nuclear) {
-              cHtml += '  <div class="nuclear-core-card" style="margin-top: 10px; padding: 10px 12px; border-radius: 8px; border: 1px solid ' + themeBorder + '; background: ' + (isTransformed ? 'rgba(245, 158, 11, 0.05)' : 'rgba(56, 189, 248, 0.05)') + ';">';
-              cHtml += '    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">';
-              cHtml += '      <div style="display:flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; color:' + themeColor + ';">';
-              cHtml += '        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:' + themeColor + ';"></span>';
-              cHtml += '        Nuclear Core (Hidden Core · 互卦 · Hù Guà)';
-              cHtml += '      </div>';
-              if (hex.nuclear.rootGate) {
-                cHtml += '      <span style="font-size:0.7rem; font-weight:700; padding:1px 6px; border-radius:4px; border:1px solid ' + themeBorder + '; background:' + (isTransformed ? 'rgba(245,158,11,0.12)' : 'rgba(56,189,248,0.12)') + '; color:' + themeColor + ';">' + hex.nuclear.rootGate.name + '</span>';
-              }
+              cHtml += '  <div class="nuclear-core-card" style="margin-top: 10px; padding: 12px; border-radius: 8px; border: 1px solid ' + themeBorder + '; background: ' + (isTransformed ? 'rgba(245, 158, 11, 0.05)' : 'rgba(56, 189, 248, 0.05)') + ';">';
+              cHtml += '    <div style="display:flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; color:' + themeColor + '; margin-bottom:2px;">';
+              cHtml += '      <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:' + themeColor + ';"></span>';
+              cHtml += '      Nuclear Core (互卦 · Hù Guà)';
               cHtml += '    </div>';
-              cHtml += '    <div style="font-size:0.72rem; font-style:italic; color:var(--text-muted); margin: 3px 0 6px 0;">';
+              if (hex.nuclear.rootGate) {
+                cHtml += '    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap;">';
+                cHtml += '      <span style="font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid ' + themeBorder + '; background:' + (isTransformed ? 'rgba(245,158,11,0.12)' : 'rgba(56,189,248,0.12)') + '; color:' + themeColor + ';">' + hex.nuclear.rootGate.name + '</span>';
+                cHtml += '      <span style="font-size:0.72rem; color:var(--text-muted); font-style:italic;">· ' + hex.nuclear.rootGate.theme + '</span>';
+                cHtml += '    </div>';
+              }
+              cHtml += '    <div style="font-size:0.72rem; font-style:italic; color:var(--text-muted); margin-bottom: 6px;">';
               cHtml += '      Latent interior engine & psychological undercurrent gestating inside lines 2–5:';
               cHtml += '    </div>';
               cHtml += '    <div style="display:flex; align-items:center; gap:10px; margin-bottom: 6px;">';
@@ -2223,9 +2260,13 @@
               text += '\nWilhelm Commentary on the Image:\n' + t.imageCommentary + '\n';
             }
             if (state.consultation.nuclearTransition) {
-              text += '\nInterior Core Transition (' + state.consultation.nuclearTransition.badge + '):\n';
-              text += state.consultation.nuclearTransition.headline + '\n';
-              text += state.consultation.nuclearTransition.description + '\n';
+              var nt = state.consultation.nuclearTransition;
+              text += '\nInterior Core Transition (' + nt.badge + '):\n';
+              text += '  State X (Initial Core):   #' + nt.fromHex.number + ' ' + nt.fromHex.english + ' (' + nt.fromGate.name + ')\n';
+              text += '  State Y (Relating Core):  #' + nt.toHex.number + ' ' + nt.toHex.english + ' (' + nt.toGate.name + ')\n';
+              text += '  Transition Vector:        ' + nt.changingLinesLabel + '\n';
+              text += '  Dynamic:                  ' + nt.headline + '\n';
+              text += '  Analysis:                 ' + nt.description + '\n';
             }
             if (t.nuclear) {
               var tGateName = t.nuclear.rootGate ? (' · ' + t.nuclear.rootGate.name) : '';
