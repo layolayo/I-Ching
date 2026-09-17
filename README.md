@@ -78,10 +78,10 @@ Beyond manifest surface phenomena, the I-Ching reveals the latent, embryonic pot
   * **Upper Nuclear Trigram**: Formed from Lines 3, 4, 5 of the parent hexagram.
 * **The 16 Nuclear Hexagram Families**: Although there are 64 hexagrams, there are strictly **only 16 possible nuclear hexagrams**. Every situation belongs structurally to one of these 16 core dynamics.
 * **The Four Primordial Root Gates**: Successive nuclear reduction recursively collapses all 64 hexagrams into **Four Terminal Topological Attractors**:
-  * **Gate 1: #1 The Creative (乾 · Qián)** — Pure Creative Yang & Dynamic Initiative
-  * **Gate 2: #2 The Receptive (坤 · Kūn)** — Pure Receptivity, Devotion & Grounding
-  * **Gate 3: #63 After Completion (既濟 · Jì Jì)** — Peak Order, Dynamic Equilibrium & Balanced Reciprocity
-  * **Gate 4: #64 Before Completion (未濟 · Wèi Jì)** — Primordial Genesis, Infinite Becoming & Open Potential
+  * **Gate 1: Hexagram 1 — The Creative (乾 · Qián)** — Pure Creative Yang & Dynamic Initiative
+  * **Gate 2: Hexagram 2 — The Receptive (坤 · Kūn)** — Pure Receptivity, Devotion & Grounding
+  * **Gate 3: Hexagram 63 — After Completion (既濟 · Jì Jì)** — Peak Order, Dynamic Equilibrium & Balanced Reciprocity
+  * **Gate 4: Hexagram 64 — Before Completion (未濟 · Wèi Jì)** — Primordial Genesis, Infinite Becoming & Open Potential
 * Each reading identifies the Root Gate attractor through clean badge pills.
 
 ### 2. The $X \to Y$ Nuclear Transition Matrix
