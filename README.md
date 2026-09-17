@@ -73,7 +73,7 @@ You can consult the oracle in under 60 seconds with total mathematical fidelity:
 * **`probability-marbles.html`**: Runs simulated draws from the 38-marble pouch.
 * **`probability-all.html`**: Side-by-side empirical benchmark comparing 3 Coins, 38 Marbles, and 49 Yarrow Stalks.
 * **`kinwen_with_changing_lines.py`**: Calculates exact transition probabilities across all 4,096 King Wen hexagram transitions using the 38-object fractional matrix.
-* **`index.html`**: Modern responsive web application supporting the 38-Marble Pouch and 49 Yarrow Stalks, featuring the complete **Richard Wilhelm / Cary F. Baynes** (Princeton University Press) translation, changing line texts (爻辭, *Yáo Cí*), Wilhelm commentary, and relating hexagram (*Zhī Guà*) evolutions.
+* **`index.html`**: Modern responsive web application supporting the 38-Marble Pouch and 49 Yarrow Stalks, featuring the complete **Richard Wilhelm / Cary F. Baynes** (Princeton University Press) translation, Wilhelm commentaries on judgments and images, deep trigram structural dynamics, a two-level layered flipping interface (Present / Lines / Future stages + Judgment / Image / Trigrams / Both aspects), and relating hexagram (*Zhī Guà*) evolutions.
 
 This code is free to use. If you like it, you can <a href="https://www.buymeacoffee.com/brianfit">buy me a coffee!</a> (I really like coffee)
 

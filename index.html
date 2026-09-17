@@ -868,6 +868,145 @@
       font-weight: 600;
     }
 
+    /* Reading Stage Switcher & Aspect Tabs */
+    .stage-tabs {
+      display: flex;
+      background: var(--card-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 4px;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .stage-tab-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid transparent;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .stage-tab-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .stage-tab-btn.active {
+      background: var(--card-bg);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .stage-tab-btn.lines-tab.active,
+    .stage-tab-btn.future-tab.active {
+      color: var(--gold);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .aspect-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px;
+      margin-top: 4px;
+      margin-bottom: 8px;
+    }
+
+    .aspect-pill-btn {
+      flex: 1;
+      min-width: 100px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .aspect-pill-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .aspect-pill-btn.active {
+      background: var(--card-bg);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
+    .transformed-card .aspect-pill-btn.active {
+      color: var(--gold);
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+
+    .commentary-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 8px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+    }
+
+    .transformed-card .commentary-box {
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .commentary-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .trigram-dynamics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .trigram-dyn-card {
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+
+    .step-nav-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .step-nav-row button {
+      flex: 1;
+    }
+
     footer {
       margin-top: 40px;
       text-align: center;
@@ -1202,6 +1341,8 @@
       var state = {
         method: 'marbles', // 'marbles' (38 pouch) or 'yarrow' (49 stalks)
         currentTab: 'chamber', // 'chamber', 'reading', 'lore'
+        readingStage: 'present', // 'present', 'lines', 'future'
+        hexAspect: 'judgment', // 'judgment', 'image', 'structure', 'overview'
         castLines: [],
         consultation: null,
         inquiryText: ''
@@ -1486,45 +1627,130 @@
       }
 
       function renderConsultation(consultation) {
-        resultsSection.style.display = 'grid';
+        if (!consultation || !consultation.primary) return;
+        resultsSection.style.display = 'block';
         var p = consultation.primary;
         var hasFuture = consultation.hasChangingLines && consultation.transformed;
-
-        if (hasFuture) {
-          resultsSection.className = 'results-grid two-col';
-        } else {
-          resultsSection.className = 'results-grid';
-        }
+        var t = consultation.transformed;
 
         var html = '';
 
-        // Primary Card (The Present / Běn Guà)
-        html += '<div class="hex-card primary-card">';
-        html += '  <div class="hex-header">';
-        html += '    <div class="hex-glyph">' + p.unicode + '</div>';
-        html += '    <div class="hex-titles">';
-        html += '      <h3>#' + p.number + ' ' + p.chinese + ' · ' + p.english + '</h3>';
-        html += '      <div class="pinyin">Primary Hexagram (本卦 · Present) · ' + p.pinyin + '</div>';
-        html += '      <div class="trigrams-tag">' + p.upperTrigram.symbol + ' ' + p.upperTrigram.name + ' (' + p.upperTrigram.element + ') above ' + p.lowerTrigram.symbol + ' ' + p.lowerTrigram.name + ' (' + p.lowerTrigram.element + ')</div>';
-        html += '    </div>';
-        html += '  </div>';
+        // Level 1: Stage Switcher (Present / Lines / Future) when changing lines exist
+        if (consultation.hasChangingLines) {
+          html += '<div class="stage-tabs" role="tablist" aria-label="Reading Stages">';
+          html += '  <button class="stage-tab-btn ' + (state.readingStage === 'present' ? 'active' : '') + '" data-stage="present" type="button">';
+          html += '    <span>☯</span> <span>Present (#' + p.number + ')</span>';
+          html += '  </button>';
+          html += '  <button class="stage-tab-btn lines-tab ' + (state.readingStage === 'lines' ? 'active' : '') + '" data-stage="lines" type="button">';
+          html += '    <span>⚡</span> <span>Lines (' + consultation.changingLines.length + ')</span>';
+          html += '  </button>';
+          if (t) {
+            html += '  <button class="stage-tab-btn future-tab ' + (state.readingStage === 'future' ? 'active' : '') + '" data-stage="future" type="button">';
+            html += '    <span>➔</span> <span>Future (#' + t.number + ')</span>';
+            html += '  </button>';
+          }
+          html += '</div>';
+        }
 
-        html += '  <div class="text-block">';
-        html += '    <h4>The Judgment</h4>';
-        html += '    <p>' + p.judgment + '</p>';
-        html += '  </div>';
+        // Helper to render aspect tabs
+        function renderAspectTabs() {
+          var aHtml = '<div class="aspect-pills" role="tablist" aria-label="Hexagram Aspects">';
+          aHtml += '  <button class="aspect-pill-btn ' + (state.hexAspect === 'judgment' ? 'active' : '') + '" data-aspect="judgment" type="button">📜 Judgment</button>';
+          aHtml += '  <button class="aspect-pill-btn ' + (state.hexAspect === 'image' ? 'active' : '') + '" data-aspect="image" type="button">🌊 Image</button>';
+          aHtml += '  <button class="aspect-pill-btn ' + (state.hexAspect === 'structure' ? 'active' : '') + '" data-aspect="structure" type="button">☯ Trigrams</button>';
+          aHtml += '  <button class="aspect-pill-btn ' + (state.hexAspect === 'overview' ? 'active' : '') + '" data-aspect="overview" type="button">👁 Both</button>';
+          aHtml += '</div>';
+          return aHtml;
+        }
 
-        html += '  <div class="text-block">';
-        html += '    <h4>The Image</h4>';
-        html += '    <p>' + p.image + '</p>';
-        html += '  </div>';
-        html += '</div>';
+        // Helper to render aspect content for any hexagram (primary or transformed)
+        function renderAspectContent(hex, isTransformed) {
+          var cHtml = '';
+          if (state.hexAspect === 'judgment') {
+            cHtml += '<div class="text-block">';
+            cHtml += '  <h4 style="color: ' + (isTransformed ? 'var(--gold)' : 'var(--accent)') + ';">The Judgment (彖辭 · Tuàn Cí)</h4>';
+            cHtml += '  <p style="font-weight: 600; color: var(--text);">' + hex.judgment + '</p>';
+            if (hex.judgmentCommentary) {
+              cHtml += '  <div class="commentary-box">';
+              cHtml += '    <div class="commentary-title">📖 Wilhelm Commentary on the Judgment</div>';
+              cHtml += '    <div>' + hex.judgmentCommentary + '</div>';
+              cHtml += '  </div>';
+            }
+            cHtml += '</div>';
+          } else if (state.hexAspect === 'image') {
+            cHtml += '<div class="text-block">';
+            cHtml += '  <h4 style="color: ' + (isTransformed ? 'var(--gold)' : 'var(--accent)') + ';">The Image (大象 · Dà Xiàng)</h4>';
+            cHtml += '  <p style="font-weight: 600; color: var(--text);">' + hex.image + '</p>';
+            if (hex.imageCommentary) {
+              cHtml += '  <div class="commentary-box">';
+              cHtml += '    <div class="commentary-title">🌊 Wilhelm Commentary on the Image</div>';
+              cHtml += '    <div>' + hex.imageCommentary + '</div>';
+              cHtml += '  </div>';
+            }
+            cHtml += '</div>';
+          } else if (state.hexAspect === 'structure') {
+            cHtml += '<div class="text-block">';
+            cHtml += '  <h4 style="color: ' + (isTransformed ? 'var(--gold)' : 'var(--accent)') + ';">☯ Trigram Dynamics & Structural Polarity</h4>';
+            cHtml += '  <div class="trigram-dynamics-grid">';
+            cHtml += '    <div class="trigram-dyn-card">';
+            cHtml += '      <div style="font-size:0.75rem;font-weight:700;color:' + (isTransformed ? 'var(--gold)' : 'var(--accent)') + ';margin-bottom:2px;">Outer Realm (Lines 4–6)</div>';
+            cHtml += '      <div style="font-size:0.95rem;font-weight:700;color:var(--text);">' + hex.upperTrigram.symbol + ' ' + hex.upperTrigram.name + ' (' + hex.upperTrigram.chinese + ')</div>';
+            cHtml += '      <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Element: ' + hex.upperTrigram.element + '<br/>' + hex.upperTrigram.nature + '</div>';
+            cHtml += '    </div>';
+            cHtml += '    <div class="trigram-dyn-card">';
+            cHtml += '      <div style="font-size:0.75rem;font-weight:700;color:' + (isTransformed ? 'var(--gold)' : 'var(--accent)') + ';margin-bottom:2px;">Inner Realm (Lines 1–3)</div>';
+            cHtml += '      <div style="font-size:0.95rem;font-weight:700;color:var(--text);">' + hex.lowerTrigram.symbol + ' ' + hex.lowerTrigram.name + ' (' + hex.lowerTrigram.chinese + ')</div>';
+            cHtml += '      <div style="font-size:0.8rem;color:var(--text-muted);margin-top:2px;">Element: ' + hex.lowerTrigram.element + '<br/>' + hex.lowerTrigram.nature + '</div>';
+            cHtml += '    </div>';
+            cHtml += '  </div>';
+            if (hex.structureCommentary) {
+              cHtml += '  <div class="commentary-box">';
+              cHtml += '    <div class="commentary-title">Wilhelm Structural Dynamics</div>';
+              cHtml += '    <div>' + hex.structureCommentary + '</div>';
+              cHtml += '  </div>';
+            }
+            cHtml += '</div>';
+          } else if (state.hexAspect === 'overview') {
+            cHtml += '<div class="text-block">';
+            cHtml += '  <h4>The Judgment</h4>';
+            cHtml += '  <p>' + hex.judgment + '</p>';
+            cHtml += '</div>';
+            cHtml += '<div class="text-block" style="margin-top:10px;">';
+            cHtml += '  <h4>The Image</h4>';
+            cHtml += '  <p>' + hex.image + '</p>';
+            cHtml += '</div>';
+          }
+          return cHtml;
+        }
 
-        // Changing Lines Card (Operative Counsel / Yáo Cí)
-        if (consultation.hasChangingLines && consultation.changingLineDetails && consultation.changingLineDetails.length > 0) {
-          html += '<div class="hex-card changing-lines-card" style="grid-column: 1 / -1; border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05);">';
+        // STAGE 1: Present (Primary Hexagram)
+        if (!consultation.hasChangingLines || state.readingStage === 'present') {
+          html += '<div class="hex-card primary-card">';
+          html += '  <div class="hex-header">';
+          html += '    <div class="hex-glyph">' + p.unicode + '</div>';
+          html += '    <div class="hex-titles">';
+          html += '      <h3>#' + p.number + ' ' + p.chinese + ' · ' + p.english + '</h3>';
+          html += '      <div class="pinyin">Primary Hexagram (本卦 · Present) · ' + p.pinyin + '</div>';
+          html += '      <div class="trigrams-tag">' + p.upperTrigram.symbol + ' ' + p.upperTrigram.name + ' (' + p.upperTrigram.element + ') above ' + p.lowerTrigram.symbol + ' ' + p.lowerTrigram.name + ' (' + p.lowerTrigram.element + ')</div>';
+          html += '    </div>';
+          html += '  </div>';
+
+          html += renderAspectTabs();
+          html += renderAspectContent(p, false);
+
+          if (consultation.hasChangingLines) {
+            html += '<div class="step-nav-row">';
+            html += '  <button class="primary" data-stage="lines" type="button">Next: The Changing Lines (' + consultation.changingLines.length + ') ➔</button>';
+            html += '</div>';
+          }
+          html += '</div>';
+        }
+
+        // STAGE 2: Lines (Changing Lines Operative Counsel)
+        else if (consultation.hasChangingLines && state.readingStage === 'lines') {
+          html += '<div class="hex-card changing-lines-card" style="border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05);">';
           html += '  <div class="hex-header" style="margin-bottom: 12px;">';
-          html += '    <div class="hex-glyph" style="color: var(--gold); font-size: 2rem;">⚡</div>';
+          html += '    <div class="hex-glyph" style="color: var(--gold); font-size: 2.4rem;">⚡</div>';
           html += '    <div class="hex-titles">';
           html += '      <h3 style="color: var(--gold);">The Changing Lines · 爻辭 (Operative Counsel)</h3>';
           html += '      <div class="pinyin" style="color: var(--text-muted);">Lines in active motion, revealing specific advice for the turning point:</div>';
@@ -1546,12 +1772,18 @@
             html += '    </div>';
           }
           html += '  </div>';
+
+          html += '  <div class="step-nav-row">';
+          html += '    <button class="secondary" data-stage="present" type="button">← Present (#' + p.number + ')</button>';
+          if (t) {
+            html += '    <button class="primary" data-stage="future" type="button">Next: Future (#' + t.number + ') ➔</button>';
+          }
+          html += '  </div>';
           html += '</div>';
         }
 
-        // Transformed Card (The Future / Zhī Guà)
-        if (hasFuture) {
-          var t = consultation.transformed;
+        // STAGE 3: Future (Relating Hexagram)
+        else if (consultation.hasChangingLines && hasFuture && state.readingStage === 'future') {
           html += '<div class="hex-card transformed-card">';
           html += '  <div class="hex-header">';
           html += '    <div class="hex-glyph">' + t.unicode + '</div>';
@@ -1562,7 +1794,7 @@
           html += '    </div>';
           html += '  </div>';
 
-          html += '  <div>';
+          html += '  <div style="margin-bottom: 8px;">';
           html += '    <div style="font-size:0.8rem;color:var(--gold);font-weight:600;margin-bottom:6px;">➔ Evolved via Changing Lines:</div>';
           html += '    <div class="changing-pills">';
           for (var i = 0; i < consultation.changingLines.length; i++) {
@@ -1571,14 +1803,12 @@
           html += '    </div>';
           html += '  </div>';
 
-          html += '  <div class="text-block">';
-          html += '    <h4>The Judgment</h4>';
-          html += '    <p>' + t.judgment + '</p>';
-          html += '  </div>';
+          html += renderAspectTabs();
+          html += renderAspectContent(t, true);
 
-          html += '  <div class="text-block">';
-          html += '    <h4>The Image</h4>';
-          html += '    <p>' + t.image + '</p>';
+          html += '  <div class="step-nav-row">';
+          html += '    <button class="secondary" data-stage="lines" type="button">← Back to Lines</button>';
+          html += '    <button class="primary" data-stage="present" type="button">☯ Back to Present</button>';
           html += '  </div>';
           html += '</div>';
         }
@@ -1588,6 +1818,29 @@
         html += '</div>';
 
         resultsSection.innerHTML = html;
+
+        // Attach event listeners for stage buttons and aspect buttons
+        var stageButtons = resultsSection.querySelectorAll('[data-stage]');
+        for (var s = 0; s < stageButtons.length; s++) {
+          stageButtons[s].addEventListener('click', function(e) {
+            var st = this.getAttribute('data-stage');
+            if (st) {
+              state.readingStage = st;
+              renderConsultation(state.consultation);
+            }
+          });
+        }
+
+        var aspectButtons = resultsSection.querySelectorAll('[data-aspect]');
+        for (var a = 0; a < aspectButtons.length; a++) {
+          aspectButtons[a].addEventListener('click', function(e) {
+            var asp = this.getAttribute('data-aspect');
+            if (asp) {
+              state.hexAspect = asp;
+              renderConsultation(state.consultation);
+            }
+          });
+        }
       }
 
       function castNextLine() {
@@ -1659,6 +1912,8 @@
             readingInquiryQuote.style.display = 'none';
           }
 
+          state.readingStage = 'present';
+          state.hexAspect = 'judgment';
           state.consultation = IChing.resolveConsultation(state.castLines);
           renderConsultation(state.consultation);
 
@@ -1677,6 +1932,8 @@
         state.castLines = [];
         state.consultation = null;
         state.inquiryText = '';
+        state.readingStage = 'present';
+        state.hexAspect = 'judgment';
 
         questionInput.value = '';
         questionInput.readOnly = false;
@@ -1725,9 +1982,19 @@
           text += 'Inquiry: "' + state.inquiryText.trim() + '"\n\n';
         }
         text += 'Primary Hexagram: #' + p.number + ' ' + p.chinese + ' (' + p.pinyin + ') — ' + p.english + ' ' + p.unicode + '\n';
-        text += 'Trigrams: ' + p.upperTrigram.name + ' (' + p.upperTrigram.symbol + ') above ' + p.lowerTrigram.name + ' (' + p.lowerTrigram.symbol + ')\n\n';
-        text += 'The Judgment:\n' + p.judgment + '\n\n';
-        text += 'The Image:\n' + p.image + '\n\n';
+        text += 'Trigrams: ' + p.upperTrigram.name + ' (' + p.upperTrigram.symbol + ') above ' + p.lowerTrigram.name + ' (' + p.lowerTrigram.symbol + ')\n';
+        if (p.structureCommentary) {
+          text += '\nTrigram Dynamics & Structural Analysis:\n' + p.structureCommentary + '\n';
+        }
+        text += '\nThe Judgment:\n' + p.judgment + '\n';
+        if (p.judgmentCommentary) {
+          text += '\nWilhelm Commentary on the Judgment:\n' + p.judgmentCommentary + '\n';
+        }
+        text += '\nThe Image:\n' + p.image + '\n';
+        if (p.imageCommentary) {
+          text += '\nWilhelm Commentary on the Image:\n' + p.imageCommentary + '\n';
+        }
+        text += '\n';
 
         if (state.consultation.hasChangingLines) {
           var t = state.consultation.transformed;
@@ -1748,9 +2015,19 @@
 
           if (t) {
             text += 'Relating Hexagram (Future / Evolved): #' + t.number + ' ' + t.chinese + ' (' + t.pinyin + ') — ' + t.english + ' ' + t.unicode + '\n';
-            text += 'Trigrams: ' + t.upperTrigram.name + ' (' + t.upperTrigram.symbol + ') above ' + t.lowerTrigram.name + ' (' + t.lowerTrigram.symbol + ')\n\n';
-            text += 'The Judgment:\n' + t.judgment + '\n\n';
-            text += 'The Image:\n' + t.image + '\n\n';
+            text += 'Trigrams: ' + t.upperTrigram.name + ' (' + t.upperTrigram.symbol + ') above ' + t.lowerTrigram.name + ' (' + t.lowerTrigram.symbol + ')\n';
+            if (t.structureCommentary) {
+              text += '\nTrigram Dynamics & Structural Analysis:\n' + t.structureCommentary + '\n';
+            }
+            text += '\nThe Judgment:\n' + t.judgment + '\n';
+            if (t.judgmentCommentary) {
+              text += '\nWilhelm Commentary on the Judgment:\n' + t.judgmentCommentary + '\n';
+            }
+            text += '\nThe Image:\n' + t.image + '\n';
+            if (t.imageCommentary) {
+              text += '\nWilhelm Commentary on the Image:\n' + t.imageCommentary + '\n';
+            }
+            text += '\n';
           }
         }
 
