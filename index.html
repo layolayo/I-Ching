@@ -1873,7 +1873,7 @@
               cHtml += '    <div style="display:flex; align-items:stretch; gap:8px; margin-bottom:12px; flex-wrap:wrap;">';
               // State X Box
               cHtml += '      <div style="flex:1 1 170px; background:rgba(0,0,0,0.25); border:1px solid rgba(56,189,248,0.3); border-radius:6px; padding:8px 10px;">';
-              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--accent); letter-spacing:0.5px; margin-bottom:4px;">STATE X · INITIAL CORE</div>';
+              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--accent); letter-spacing:0.5px; margin-bottom:4px;">INITIAL CORE</div>';
               cHtml += '        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">';
               cHtml += '          <div style="font-size:1.6rem; line-height:1; color:var(--accent);">' + nt.fromHex.unicode + '</div>';
               cHtml += '          <div>';
@@ -1892,7 +1892,7 @@
 
               // State Y Box
               cHtml += '      <div style="flex:1 1 170px; background:rgba(0,0,0,0.25); border:1px solid rgba(245,158,11,0.4); border-radius:6px; padding:8px 10px;">';
-              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--gold); letter-spacing:0.5px; margin-bottom:4px;">STATE Y · RELATING CORE</div>';
+              cHtml += '        <div style="font-size:0.68rem; font-weight:700; color:var(--gold); letter-spacing:0.5px; margin-bottom:4px;">RELATING CORE</div>';
               cHtml += '        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">';
               cHtml += '          <div style="font-size:1.6rem; line-height:1; color:var(--gold);">' + nt.toHex.unicode + '</div>';
               cHtml += '          <div>';
@@ -1917,9 +1917,8 @@
               cHtml += '      Nuclear Core (互卦 · Hù Guà)';
               cHtml += '    </div>';
               if (hex.nuclear.rootGate) {
-                cHtml += '    <div style="display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap;">';
+                cHtml += '    <div style="margin-bottom:8px;">';
                 cHtml += '      <span style="font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid ' + themeBorder + '; background:' + (isTransformed ? 'rgba(245,158,11,0.12)' : 'rgba(56,189,248,0.12)') + '; color:' + themeColor + ';">' + hex.nuclear.rootGate.name + '</span>';
-                cHtml += '      <span style="font-size:0.72rem; color:var(--text-muted); font-style:italic;">· ' + hex.nuclear.rootGate.theme + '</span>';
                 cHtml += '    </div>';
               }
               cHtml += '    <div style="font-size:0.72rem; font-style:italic; color:var(--text-muted); margin-bottom: 6px;">';
@@ -2262,8 +2261,8 @@
             if (state.consultation.nuclearTransition) {
               var nt = state.consultation.nuclearTransition;
               text += '\nInterior Core Transition (' + nt.badge + '):\n';
-              text += '  State X (Initial Core):   #' + nt.fromHex.number + ' ' + nt.fromHex.english + ' (' + nt.fromGate.name + ')\n';
-              text += '  State Y (Relating Core):  #' + nt.toHex.number + ' ' + nt.toHex.english + ' (' + nt.toGate.name + ')\n';
+              text += '  Initial Core:             #' + nt.fromHex.number + ' ' + nt.fromHex.english + ' (' + nt.fromGate.name + ')\n';
+              text += '  Relating Core:            #' + nt.toHex.number + ' ' + nt.toHex.english + ' (' + nt.toGate.name + ')\n';
               text += '  Transition Vector:        ' + nt.changingLinesLabel + '\n';
               text += '  Dynamic:                  ' + nt.headline + '\n';
               text += '  Analysis:                 ' + nt.description + '\n';
