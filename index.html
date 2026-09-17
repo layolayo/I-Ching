@@ -392,6 +392,48 @@
       color: var(--text);
     }
 
+    .lore-nav-pills {
+      display: flex;
+      gap: 6px;
+      margin: 14px 0 16px 0;
+      background: rgba(0, 0, 0, 0.25);
+      padding: 4px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .lore-nav-pill-btn {
+      flex: 1;
+      height: 32px;
+      box-sizing: border-box;
+      min-width: 90px;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .lore-nav-pill-btn:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .lore-nav-pill-btn.active {
+      background: var(--card-bg);
+      color: var(--accent);
+      border-color: rgba(56, 189, 248, 0.35);
+    }
+
     /* Sincere Inquiry & Focus of Intent Card */
     .inquiry-card {
       background: rgba(56, 189, 248, 0.04);
@@ -1246,106 +1288,22 @@
     <!-- Tab 3: Lore & Math -->
     <div id="tabPanel-lore" class="tab-panel" role="tabpanel" aria-labelledby="tabBtn-lore" hidden>
       <section class="card lore-page-card">
-        <h2><span>☯</span> The Wisdom, Origin & Mathematics of the Split</h2>
-        
-        <div class="lore-section">
-          <h3>1. Ancient Origin & Zhu Xi's Codification (1186 CE)</h3>
-          <p>The yarrow stalk oracle originates in the Han-era <em>Great Treatise</em> (繫辭傳, <em>Dazhuan</em>): <em>"The numbers of the Great Expansion are fifty; of these we use forty-nine."</em> For centuries, the exact physical sorting ritual was handed down through oral tradition until Song Dynasty philosopher <strong>Zhu Xi (朱熹, 1130–1200 CE)</strong> preserved and mathematically standardized the 3-pass algorithm in his 1186 CE manual <em>Yixue Qimeng</em> (《易學啟蒙》), saving the authentic 18-step ritual for posterity.</p>
+        <h2><span>☯</span> The Wisdom, Origin & Mathematics of the Oracle</h2>
+        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: -8px; margin-bottom: 12px;">
+          Classical foundations, mathematical precision, nuclear cores & authentic consultation protocol.
         </div>
 
-        <div class="lore-section">
-          <h3>2. The Flawed 3-Coin Shortcut & Martin Gardner (1974)</h3>
-          <p>Because sorting physical stalks 18 times takes 15 to 20 minutes, Westerners popularized flipping three coins. But in 1974, famed mathematician <strong>Martin Gardner</strong> proved in <em>Scientific American</em> that flipping coins fundamentally distorts the oracle. Coins produce equal 12.5% odds for both changing lines (Old Yang and Old Yin). In authentic Chinese thought, this symmetry is mistaken: <strong>Yang</strong> (creative initiative, flame, activity) is restless and quick to burn out and transform; whereas <strong>Yin</strong> (earth, darkness, receptivity) is steadfast, cold, and slow to alter course. Gardner worked out the first modern mathematical model of stalks, establishing a 16-part ratio where Yang changes three to four times faster than Yin (3/16 vs 1/16).</p>
+        <!-- Segmented Lore Switcher -->
+        <div class="lore-nav-pills" role="tablist" aria-label="Lore Sections">
+          <button class="lore-nav-pill-btn active" data-lore="ritual" type="button">🌿 Ritual</button>
+          <button class="lore-nav-pill-btn" data-lore="math" type="button">🔮 Math</button>
+          <button class="lore-nav-pill-btn" data-lore="nuclear" type="button">⚛ Nuclear</button>
+          <button class="lore-nav-pill-btn" data-lore="protocol" type="button">🧘 Mind</button>
+          <button class="lore-nav-pill-btn" data-lore="wilhelm" type="button">📜 Wilhelm</button>
         </div>
 
-        <div class="lore-section">
-          <h3>3. Andrew Kennedy's Revised Yarrow Algorithm (2006)</h3>
-          <p>In 2006, researcher <strong>Andrew Kennedy</strong> published his revised yarrow algorithm in <em>Briefing Leaders: A new look at the I Ching and the Tao De Ching</em> (Gravity Publishing, 2006), making a profound breakthrough: Gardner's 1974 math was idealized chalkboard theory. Gardner assumed stalks behave like pure abstract numbers that divide evenly into quarters. But real human hands cannot divide stalks on a chalkboard:</p>
-          <ul style="margin: 8px 0 8px 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
-            <li>When you divide 49 stalks into your left and right hands, <strong>neither hand can ever be empty</strong>.</li>
-            <li>You immediately remove 1 stalk from the right hand to tuck between your left fingers—meaning the right hand must hold at least 2 stalks initially, or it would be left empty.</li>
-            <li>On the initial pass, this leaves 47 possible physical hand divisions. <strong>47 is a prime number</strong>—it does not divide into clean chalkboard quarters!</li>
-            <li>On subsequent passes, dividing 44, 40, 36, or 32 stalks is governed by these same physical hand boundaries.</li>
-          </ul>
-        </div>
-
-        <div class="lore-section gold">
-          <h3>4. Why 38 Marbles Replaces 32 (The Real Math)</h3>
-          <p>Because human hands cannot hold zero stalks, real-world yarrow probabilities subtly shift away from Gardner's chalkboard 16/32 model:</p>
-          <ul style="margin: 8px 0 8px 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
-            <li>In the old 32-marble bag, line odds are off by up to <strong>2.4% on every single line</strong> (Young Yang is over-represented by +2.38%, and Old Yang is under-represented by -2.37%).</li>
-            <li>In contrast, calculating the exact probability of physical non-zero hand splits matches a pouch of <strong>38 marbles to within less than a tenth of one percent (0.09%)</strong>!</li>
-            <li>An exhaustive mathematical search across all possible pouch sizes from 10 to 100 objects proves that <strong>38 is the #1 global optimum in existence</strong>.</li>
-          </ul>
-          <p style="margin-top:6px;">The 32-marble bag was abstract paper theory; <strong>38 marbles is what physical yarrow stalks actually do in human hands</strong>.</p>
-        </div>
-
-        <div class="lore-section">
-          <h3>5. The Sacred 38-Marble Pouch (Optimal Real-World Stalk Model)</h3>
-          <p>To consult the oracle with 100% fidelity to physical yarrow stalks in under 60 seconds, draw blindly from a pouch of 38 marbles:</p>
-          <table class="ratio-table">
-            <thead>
-              <tr>
-                <th>Marble Appearance</th>
-                <th>Count in Pouch</th>
-                <th>Ratio / Fraction</th>
-                <th>Exact Stalk Probability</th>
-                <th>Line Produced</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Pure Black</strong></td>
-                <td>17</td>
-                <td>17 / 38</td>
-                <td><strong>44.74%</strong> (True stalks: 44.84%)</td>
-                <td>Young Yin (8) — Unchanging Yin</td>
-              </tr>
-              <tr>
-                <td><strong>Pure White</strong></td>
-                <td>11</td>
-                <td>11 / 38</td>
-                <td><strong>28.95%</strong> (True stalks: 28.87%)</td>
-                <td>Young Yang (7) — Unchanging Yang</td>
-              </tr>
-              <tr>
-                <td><strong>White with Black Specks (●)</strong></td>
-                <td>8</td>
-                <td>8 / 38</td>
-                <td><strong>21.05%</strong> (True stalks: 21.12%)</td>
-                <td>Old Yang (9) — Changing Yang ➔ Yin</td>
-              </tr>
-              <tr>
-                <td><strong>Black with White Specks (✕)</strong></td>
-                <td>2</td>
-                <td>2 / 38</td>
-                <td><strong>5.26%</strong> (True stalks: 5.17%)</td>
-                <td>Old Yin (6) — Changing Yin ➔ Yang</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="lore-section">
-          <h3>6. The Present (Běn Guà) vs The Future (Zhī Guà)</h3>
-          <p>The primary hexagram (本卦, <em>Běn Guà</em>) represents the present situation. Lines cast as 6 or 9 are at their energetic extreme, actively transforming into their opposites. These changing lines bridge the present into the relating hexagram (之卦, <em>Zhī Guà</em>), revealing the emerging future landscape if present momentum continues.</p>
-        </div>
-
-        <div class="lore-section gold">
-          <h3>7. Classical Consultation Protocol (Mind, Intent & Hexagram 4)</h3>
-          <p>The Han-era <em>Great Treatise</em> (繫辭傳, <em>Dazhuan</em>) and Song Dynasty master <strong>Zhu Xi (朱熹)</strong> established that consulting the Book of Changes is not fortune-telling, but a meditative dialogue with cosmic rhythm:</p>
-          <ul style="margin: 8px 0 8px 20px; font-size: 0.88rem; line-height: 1.6; color: var(--text-muted);">
-            <li><strong>Sincerity of Intent (誠, <em>Chéng</em>):</strong> <em>"In stillness it is without thought, tranquil and unmoving; when stirred, it penetrates all under heaven."</em> Approach the oracle with a calm, centered, and quiet mind.</li>
-            <li><strong>Hold the Question Throughout:</strong> Bring your inquiry clearly to mind before casting Line 1, and sustain single-minded focus as each line is drawn from the bottom up to the top. Divided attention clouds the discernment.</li>
-            <li><strong>How to Frame an Inquiry:</strong> Formulate open-ended questions concerning attitude, timing, and energetic dynamics (e.g. <em>"What forces are at play in this situation?"</em> or <em>"How should I navigate this conflict?"</em>) rather than testing the oracle with trivial yes/no predictions.</li>
-            <li><strong>The Rule of Hexagram 4 (Youthful Folly / 蒙):</strong> <em>"The first consultation informs; asking repeatedly out of dissatisfaction is importunity. If importunate, I give no information"</em> (初筮告，再三瀆，瀆則不告). Accept the reading received with meditative reflection rather than re-casting until you hear what you wanted to hear.</li>
-          </ul>
-        </div>
-
-        <div class="lore-section">
-          <h3>8. Classical Translation & Commentary (Wilhelm / Baynes)</h3>
-          <p>The judgments, images, line texts (爻辭, <em>Yáo Cí</em>), and commentary in this oracle are drawn from the Richard Wilhelm translation, translated from German into English by Cary F. Baynes, with a renowned foreword by C.G. Jung (Princeton University Press, Bollingen Series XIX). First published in English in 1950, this edition remains the international gold standard for philosophical depth, psychological insight, and scholarly fidelity.</p>
-        </div>
+        <!-- Active Lore Section Content -->
+        <div id="loreContentArea"></div>
       </section>
     </div>
   </main>
@@ -1363,6 +1321,7 @@
         currentTab: 'chamber', // 'chamber', 'reading', 'lore'
         readingStage: 'present', // 'present', 'lines', 'future'
         hexAspect: 'judgment', // 'judgment', 'image', 'structure', 'overview'
+        loreSection: 'ritual', // 'ritual', 'math', 'nuclear', 'protocol', 'wilhelm'
         castLines: [],
         consultation: null,
         inquiryText: ''
@@ -1425,6 +1384,10 @@
               panel.setAttribute('hidden', '');
             }
           });
+
+          if (tabId === 'lore') {
+            renderLoreContent();
+          }
         };
 
         if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -1555,9 +1518,130 @@
         }
       });
 
-      loreToggleBtn.addEventListener('click', function() {
-        lorePanel.classList.toggle('open');
-        loreToggleBtn.textContent = lorePanel.classList.contains('open') ? '✕ Close Lore' : 'ℹ Lore & Math';
+      function renderLoreContent() {
+        var container = document.getElementById('loreContentArea');
+        if (!container) return;
+
+        var loreButtons = document.querySelectorAll('.lore-nav-pill-btn');
+        loreButtons.forEach(function(btn) {
+          var isActive = btn.dataset.lore === state.loreSection;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+
+        var sections = (window.IChing && window.IChing.LORE_SECTIONS) || [];
+        var sec = sections.find(function(s) {
+          return s.id === state.loreSection;
+        });
+        if (!sec) return;
+
+        var html = '';
+        html += '<div class="lore-section gold" style="border-left: 3px solid var(--accent); padding-left: 14px;">';
+        html += '  <div style="display:flex; align-items:center; gap:8px; margin-bottom: 2px;">';
+        html += '    <h3 style="margin:0; font-size: 1.1rem; color: var(--accent);">' + sec.title + '</h3>';
+        html += '  </div>';
+        html += '  <div style="font-size: 0.85rem; color: var(--gold); font-weight: 600; margin-bottom: 14px;">' + sec.subtitle + '</div>';
+
+        if (sec.id === 'ritual') {
+          html += '  <p>' + sec.paragraphs[0] + '</p>';
+          html += '  <div style="background: rgba(0,0,0,0.22); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.85rem; margin-bottom: 4px;">Three-Pass Division Ceremony:</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[1] + '</p>';
+          html += '  </div>';
+          html += '  <p>' + sec.paragraphs[2] + '</p>';
+        } else if (sec.id === 'math') {
+          html += '  <p>' + sec.paragraphs[0] + '</p>';
+          html += '  <div style="background: rgba(0,0,0,0.22); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.85rem; margin-bottom: 4px;">Andrew Kennedy (2006) & Physical Hands Discovery:</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[1] + '</p>';
+          html += '  </div>';
+          html += '  <p>' + sec.paragraphs[2] + '</p>';
+          html += '  <h4 style="margin: 16px 0 8px 0; color: var(--gold); font-size: 0.95rem;">The Sacred 38-Marble Pouch (Optimal Real-World Stalk Model)</h4>';
+          html += '  <table class="ratio-table">';
+          html += '    <thead>';
+          html += '      <tr>';
+          html += '        <th>Marble Appearance</th>';
+          html += '        <th>Count</th>';
+          html += '        <th>Ratio</th>';
+          html += '        <th>Probability</th>';
+          html += '        <th>Line Produced</th>';
+          html += '      </tr>';
+          html += '    </thead>';
+          html += '    <tbody>';
+          html += '      <tr>';
+          html += '        <td><strong>Pure Black</strong></td>';
+          html += '        <td>17</td>';
+          html += '        <td>17 / 38</td>';
+          html += '        <td><strong>44.74%</strong> (True stalks: 44.84%)</td>';
+          html += '        <td>Young Yin (8) — Unchanging Yin</td>';
+          html += '      </tr>';
+          html += '      <tr>';
+          html += '        <td><strong>Pure White</strong></td>';
+          html += '        <td>11</td>';
+          html += '        <td>11 / 38</td>';
+          html += '        <td><strong>28.95%</strong> (True stalks: 28.87%)</td>';
+          html += '        <td>Young Yang (7) — Unchanging Yang</td>';
+          html += '      </tr>';
+          html += '      <tr>';
+          html += '        <td><strong>White with Black Specks (●)</strong></td>';
+          html += '        <td>8</td>';
+          html += '        <td>8 / 38</td>';
+          html += '        <td><strong>21.05%</strong> (True stalks: 21.12%)</td>';
+          html += '        <td>Old Yang (9) — Changing Yang ➔ Yin</td>';
+          html += '      </tr>';
+          html += '      <tr>';
+          html += '        <td><strong>Black with White Specks (✕)</strong></td>';
+          html += '        <td>2</td>';
+          html += '        <td>2 / 38</td>';
+          html += '        <td><strong>5.26%</strong> (True stalks: 5.17%)</td>';
+          html += '        <td>Old Yin (6) — Changing Yin ➔ Yang</td>';
+          html += '      </tr>';
+          html += '    </tbody>';
+          html += '  </table>';
+        } else if (sec.id === 'nuclear') {
+          html += '  <p>' + sec.paragraphs[0] + '</p>';
+          html += '  <div style="background: rgba(0,0,0,0.22); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.85rem; margin-bottom: 4px;">Anatomy of the Nuclear Core:</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[1] + '</p>';
+          html += '  </div>';
+          html += '  <div style="margin: 12px 0;">';
+          html += '    <h4 style="margin:0 0 4px 0; color: var(--text); font-size: 0.92rem;">Canonical Pedigree in Classical Antiquity</h4>';
+          html += '    <p>' + sec.paragraphs[2].replace('Canonical Pedigree:\n', '') + '</p>';
+          html += '  </div>';
+          html += '  <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 4px;">The 16 Archetypes & 4 Primordial Roots:</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[3].replace('The 16 Archetypes & 4 Primordial Roots:\n', '') + '</p>';
+          html += '  </div>';
+        } else if (sec.id === 'protocol') {
+          html += '  <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.88rem; margin-bottom: 4px;">Sincerity of Intent (誠 · Chéng)</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[0].replace('Sincerity of Intent (誠, Chéng):\n', '') + '</p>';
+          html += '  </div>';
+          html += '  <p><strong>Hold the Question Throughout:</strong> ' + sec.paragraphs[1].replace('Hold the Question Throughout:\n', '') + '</p>';
+          html += '  <p><strong>How to Frame an Inquiry:</strong> ' + sec.paragraphs[2].replace('How to Frame an Inquiry:\n', '') + '</p>';
+          html += '  <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--gold); font-size: 0.88rem; margin-bottom: 4px;">The Sacred Rule of Hexagram 4 (Youthful Folly · 蒙)</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[3].replace('The Sacred Rule of Hexagram 4 (Youthful Folly · 蒙):\n', '') + '</p>';
+          html += '  </div>';
+        } else if (sec.id === 'wilhelm') {
+          html += '  <p>' + sec.paragraphs[0] + '</p>';
+          html += '  <p>' + sec.paragraphs[1] + '</p>';
+          html += '  <div style="background: rgba(0,0,0,0.22); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+          html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.85rem; margin-bottom: 4px;">C.G. Jung & Synchronicity:</div>';
+          html += '    <p style="margin:0;">' + sec.paragraphs[2] + '</p>';
+          html += '  </div>';
+        }
+
+        html += '</div>';
+        container.innerHTML = html;
+      }
+
+      var lorePills = document.querySelectorAll('.lore-nav-pill-btn');
+      lorePills.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          state.loreSection = btn.dataset.lore;
+          renderLoreContent();
+        });
       });
 
       function updateLineUI(line) {
@@ -1755,8 +1839,31 @@
 
             cHtml += '  </div>';
 
+            // Nuclear Core Card (Hidden Core · 互卦)
+            if (hex.nuclear) {
+              cHtml += '  <div class="nuclear-core-card" style="margin-top: 10px; padding: 10px 12px; border-radius: 8px; border: 1px solid ' + themeBorder + '; background: ' + (isTransformed ? 'rgba(245, 158, 11, 0.05)' : 'rgba(56, 189, 248, 0.05)') + ';">';
+              cHtml += '    <div style="display:flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; color:' + themeColor + ';">';
+              cHtml += '      <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:' + themeColor + ';"></span>';
+              cHtml += '      Nuclear Core (Hidden Core · 互卦 · Hù Guà)';
+              cHtml += '    </div>';
+              cHtml += '    <div style="font-size:0.72rem; font-style:italic; color:var(--text-muted); margin: 3px 0 6px 0;">';
+              cHtml += '      Latent interior engine & psychological undercurrent gestating inside lines 2–5:';
+              cHtml += '    </div>';
+              cHtml += '    <div style="display:flex; align-items:center; gap:10px; margin-bottom: 6px;">';
+              cHtml += '      <div style="font-size:1.8rem; line-height:1; color:' + themeColor + ';">' + hex.nuclear.hexagram.unicode + '</div>';
+              cHtml += '      <div>';
+              cHtml += '        <div style="font-size:0.88rem; font-weight:700; color:var(--text); line-height:1.2;">#' + hex.nuclear.hexagram.number + ' ' + hex.nuclear.hexagram.english + ' · ' + hex.nuclear.hexagram.chinese + ' (' + hex.nuclear.hexagram.pinyin + ')</div>';
+              cHtml += '        <div style="font-size:0.74rem; color:var(--text-muted); margin-top:1px;">Upper Core (3–5): ' + hex.nuclear.upperTrigram.symbol + ' ' + hex.nuclear.upperTrigram.name + ' (' + hex.nuclear.upperTrigram.nature + ') &nbsp;•&nbsp; Lower Core (2–4): ' + hex.nuclear.lowerTrigram.symbol + ' ' + hex.nuclear.lowerTrigram.name + ' (' + hex.nuclear.lowerTrigram.nature + ')</div>';
+              cHtml += '      </div>';
+              cHtml += '    </div>';
+              cHtml += '    <div style="font-size:0.78rem; line-height:1.35; color:var(--text);">';
+              cHtml += '      ' + hex.nuclear.hexagram.judgment;
+              cHtml += '    </div>';
+              cHtml += '  </div>';
+            }
+
             if (hex.structureCommentary) {
-              cHtml += '  <div class="commentary-box" style="border-color: ' + themeBorder + ';">';
+              cHtml += '  <div class="commentary-box" style="border-color: ' + themeBorder + '; margin-top: 10px;">';
               cHtml += '    <div class="commentary-title">📖 Wilhelm Structural & Elemental Commentary</div>';
               cHtml += '    <div>' + hex.structureCommentary + '</div>';
               cHtml += '  </div>';
@@ -2037,6 +2144,11 @@
         if (p.imageCommentary) {
           text += '\nWilhelm Commentary on the Image:\n' + p.imageCommentary + '\n';
         }
+        if (p.nuclear) {
+          text += '\nNuclear Hexagram (Hidden Core · 互卦): #' + p.nuclear.hexagram.number + ' ' + p.nuclear.hexagram.chinese + ' (' + p.nuclear.hexagram.pinyin + ') — ' + p.nuclear.hexagram.english + ' ' + p.nuclear.hexagram.unicode + '\n';
+          text += 'Nuclear Trigrams: ' + p.nuclear.upperTrigram.name + ' (' + p.nuclear.upperTrigram.symbol + ') above ' + p.nuclear.lowerTrigram.name + ' (' + p.nuclear.lowerTrigram.symbol + ')\n';
+          text += 'Nuclear Judgment: ' + p.nuclear.hexagram.judgment + '\n';
+        }
         text += '\n';
 
         if (state.consultation.hasChangingLines) {
@@ -2069,6 +2181,11 @@
             text += '\nThe Image:\n' + t.image + '\n';
             if (t.imageCommentary) {
               text += '\nWilhelm Commentary on the Image:\n' + t.imageCommentary + '\n';
+            }
+            if (t.nuclear) {
+              text += '\nNuclear Hexagram (Hidden Core · 互卦): #' + t.nuclear.hexagram.number + ' ' + t.nuclear.hexagram.chinese + ' (' + t.nuclear.hexagram.pinyin + ') — ' + t.nuclear.hexagram.english + ' ' + t.nuclear.hexagram.unicode + '\n';
+              text += 'Nuclear Trigrams: ' + t.nuclear.upperTrigram.name + ' (' + t.nuclear.upperTrigram.symbol + ') above ' + t.nuclear.lowerTrigram.name + ' (' + t.nuclear.lowerTrigram.symbol + ')\n';
+              text += 'Nuclear Judgment: ' + t.nuclear.hexagram.judgment + '\n';
             }
             text += '\n';
           }
@@ -2118,6 +2235,7 @@
       });
 
       updateMethodUI();
+      renderLoreContent();
     })();
   </script>
 </body>
