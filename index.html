@@ -1609,9 +1609,15 @@
           html += '    <p>' + sec.paragraphs[2].replace('Canonical Pedigree:\n', '') + '</p>';
           html += '  </div>';
           html += '  <div style="background: rgba(245, 158, 11, 0.06); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px; margin: 12px 0;">';
-          html += '    <div style="font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 4px;">The 16 Archetypes & 4 Primordial Roots:</div>';
-          html += '    <p style="margin:0;">' + sec.paragraphs[3].replace('The 16 Archetypes & 4 Primordial Roots:\n', '') + '</p>';
+          html += '    <div style="font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 4px;">The 4 Primordial Root Gates (The Cosmic Pillars):</div>';
+          html += '    <p style="margin:0; white-space:pre-line;">' + sec.paragraphs[3].replace('The 4 Primordial Root Gates (The Four Cosmic Pillars):\n', '') + '</p>';
           html += '  </div>';
+          if (sec.paragraphs[4]) {
+            html += '  <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+            html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.85rem; margin-bottom: 4px;">The Three Levels of Changing Line Impact (X ➔ Y Core Matrix):</div>';
+            html += '    <p style="margin:0; white-space:pre-line;">' + sec.paragraphs[4].replace('The Three Levels of Changing Line Impact on the Core (X ➔ Y):\n', '') + '</p>';
+            html += '  </div>';
+          }
         } else if (sec.id === 'protocol') {
           html += '  <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 12px; margin: 12px 0;">';
           html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.88rem; margin-bottom: 4px;">Sincerity of Intent (誠 · Chéng)</div>';
@@ -1839,12 +1845,33 @@
 
             cHtml += '  </div>';
 
+            // Nuclear Transition Card (X -> Y Matrix) for Relating Hexagram
+            if (isTransformed && state.consultation && state.consultation.nuclearTransition) {
+              var nt = state.consultation.nuclearTransition;
+              cHtml += '  <div class="nuclear-transition-card" style="margin-top: 10px; padding: 12px 14px; border-radius: 8px; border: 1px solid rgba(245, 158, 11, 0.35); background: rgba(0, 0, 0, 0.28);">';
+              cHtml += '    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px; margin-bottom:6px;">';
+              cHtml += '      <div style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:700; color:var(--gold);">';
+              cHtml += '        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--gold);"></span>';
+              cHtml += '        Interior Core Transition (X ➔ Y Engine Matrix)';
+              cHtml += '      </div>';
+              cHtml += '      <span style="font-size:0.7rem; font-weight:700; padding:2px 7px; border-radius:4px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.4); color:var(--gold);">' + nt.badge + '</span>';
+              cHtml += '    </div>';
+              cHtml += '    <div style="font-size:0.88rem; font-weight:700; color:var(--text); margin-bottom:4px;">' + nt.headline + '</div>';
+              cHtml += '    <div style="font-size:0.8rem; line-height:1.45; color:var(--text-muted);">' + nt.description + '</div>';
+              cHtml += '  </div>';
+            }
+
             // Nuclear Core Card (Hidden Core · 互卦)
             if (hex.nuclear) {
               cHtml += '  <div class="nuclear-core-card" style="margin-top: 10px; padding: 10px 12px; border-radius: 8px; border: 1px solid ' + themeBorder + '; background: ' + (isTransformed ? 'rgba(245, 158, 11, 0.05)' : 'rgba(56, 189, 248, 0.05)') + ';">';
-              cHtml += '    <div style="display:flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; color:' + themeColor + ';">';
-              cHtml += '      <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:' + themeColor + ';"></span>';
-              cHtml += '      Nuclear Core (Hidden Core · 互卦 · Hù Guà)';
+              cHtml += '    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:6px;">';
+              cHtml += '      <div style="display:flex; align-items:center; gap:6px; font-size:0.75rem; font-weight:700; color:' + themeColor + ';">';
+              cHtml += '        <span style="display:inline-block; width:6px; height:6px; border-radius:50%; background:' + themeColor + ';"></span>';
+              cHtml += '        Nuclear Core (Hidden Core · 互卦 · Hù Guà)';
+              cHtml += '      </div>';
+              if (hex.nuclear.rootGate) {
+                cHtml += '      <span style="font-size:0.7rem; font-weight:700; padding:1px 6px; border-radius:4px; border:1px solid ' + themeBorder + '; background:' + (isTransformed ? 'rgba(245,158,11,0.12)' : 'rgba(56,189,248,0.12)') + '; color:' + themeColor + ';">' + hex.nuclear.rootGate.name + '</span>';
+              }
               cHtml += '    </div>';
               cHtml += '    <div style="font-size:0.72rem; font-style:italic; color:var(--text-muted); margin: 3px 0 6px 0;">';
               cHtml += '      Latent interior engine & psychological undercurrent gestating inside lines 2–5:';
@@ -2145,7 +2172,8 @@
           text += '\nWilhelm Commentary on the Image:\n' + p.imageCommentary + '\n';
         }
         if (p.nuclear) {
-          text += '\nNuclear Hexagram (Hidden Core · 互卦): #' + p.nuclear.hexagram.number + ' ' + p.nuclear.hexagram.chinese + ' (' + p.nuclear.hexagram.pinyin + ') — ' + p.nuclear.hexagram.english + ' ' + p.nuclear.hexagram.unicode + '\n';
+          var pGateName = p.nuclear.rootGate ? (' · ' + p.nuclear.rootGate.name) : '';
+          text += '\nNuclear Hexagram (Hidden Core · 互卦' + pGateName + '): #' + p.nuclear.hexagram.number + ' ' + p.nuclear.hexagram.chinese + ' (' + p.nuclear.hexagram.pinyin + ') — ' + p.nuclear.hexagram.english + ' ' + p.nuclear.hexagram.unicode + '\n';
           text += 'Nuclear Trigrams: ' + p.nuclear.upperTrigram.name + ' (' + p.nuclear.upperTrigram.symbol + ') above ' + p.nuclear.lowerTrigram.name + ' (' + p.nuclear.lowerTrigram.symbol + ')\n';
           text += 'Nuclear Judgment: ' + p.nuclear.hexagram.judgment + '\n';
         }
@@ -2182,8 +2210,14 @@
             if (t.imageCommentary) {
               text += '\nWilhelm Commentary on the Image:\n' + t.imageCommentary + '\n';
             }
+            if (state.consultation.nuclearTransition) {
+              text += '\nInterior Core Transition (' + state.consultation.nuclearTransition.badge + '):\n';
+              text += state.consultation.nuclearTransition.headline + '\n';
+              text += state.consultation.nuclearTransition.description + '\n';
+            }
             if (t.nuclear) {
-              text += '\nNuclear Hexagram (Hidden Core · 互卦): #' + t.nuclear.hexagram.number + ' ' + t.nuclear.hexagram.chinese + ' (' + t.nuclear.hexagram.pinyin + ') — ' + t.nuclear.hexagram.english + ' ' + t.nuclear.hexagram.unicode + '\n';
+              var tGateName = t.nuclear.rootGate ? (' · ' + t.nuclear.rootGate.name) : '';
+              text += '\nRelating Nuclear Hexagram (Hidden Core · 互卦' + tGateName + '): #' + t.nuclear.hexagram.number + ' ' + t.nuclear.hexagram.chinese + ' (' + t.nuclear.hexagram.pinyin + ') — ' + t.nuclear.hexagram.english + ' ' + t.nuclear.hexagram.unicode + '\n';
               text += 'Nuclear Trigrams: ' + t.nuclear.upperTrigram.name + ' (' + t.nuclear.upperTrigram.symbol + ') above ' + t.nuclear.lowerTrigram.name + ' (' + t.nuclear.lowerTrigram.symbol + ')\n';
               text += 'Nuclear Judgment: ' + t.nuclear.hexagram.judgment + '\n';
             }
