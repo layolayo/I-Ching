@@ -1,6 +1,6 @@
 # I-Ching: Stalks & Sacred Marbles Divination Engine
 
-> **Andrew Kennedy's Revised Yarrow Algorithm**: A rigorous mathematical revision of the classical Yarrow Stalk sorting algorithm, accounting for physical hand partition boundaries and introducing the **38-Marble Divination Method**.
+> **Andrew Kennedy's Revised Yarrow Algorithm**: A rigorous mathematical revision of the classical Yarrow Stalk sorting algorithm, accounting for physical hand partition boundaries, introducing the **38-Marble Divination Method**, the **Nuclear Trigram Engine (*Hù Guà*) with the Four Primordial Root Gates**, and the definitive **Richard Wilhelm / Cary F. Baynes** classical translation and structural commentary.
 
 <p align="center">
   <img src="preview.png" alt="I-Ching: Stalks & Sacred Marbles" width="100%" />
@@ -31,7 +31,7 @@ In his 2006 work *Briefing Leaders: A new look at the I Ching and the Tao De Chi
 Real human hands do not divide stalks on a chalkboard:
 1. When you split 49 stalks into your left and right hands, **neither hand can ever be empty**.
 2. You immediately take 1 stalk from your right hand to hold between your fingers—meaning the right hand **must hold at least 2 stalks initially**, or it would be left empty.
-3. Therefore, dividing 49 stalks between two physical hands creates **47 possible physical split points** (2 ≤ West ≤ 48).
+3. Therefore, dividing 49 stalks between two physical hands creates **47 possible physical split points** ($2 \le \text{West} \le 48$).
 4. **47 is a prime number**—it does not divide into clean chalkboard quarters!
 5. On subsequent passes (dividing 44, 40, 36, or 32 stalks), the same physical hand boundaries apply.
 
@@ -43,7 +43,7 @@ Because physical hands cannot hold zero stalks, real-world yarrow probabilities 
 * **The 38-Marble Bag is Near-Perfect**: Calculating the exact cumulative probability across all physical hand splits reveals that the true odds match a pouch of **38 marbles to within less than a tenth of one percent (< 0.09%)**!
 * **Global Mathematical Proof**: An exhaustive mathematical search across all possible pouch sizes between 10 and 100 objects proves that **38 is the #1 global optimum in existence**.
 
-| Line Type | Symbol | Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy's Revised (38 Bag) | Accuracy Error |
+| Line Type | Symbol | Classical Meaning | Gardner (32 Bag) | True Physical Stalks | Kennedy's Revised (38 Bag) | Accuracy Delta |
 | :--- | :---: | :--- | :---: | :---: | :---: | :---: |
 | **Young Yin (8)** | ━━━ ━━━ | Unchanging Yin | 43.75% (14/32) | **44.84%** | **44.74%** (17/38) | **< 0.10%** |
 | **Young Yang (7)** | ━━━━━━━ | Unchanging Yang | 31.25% (10/32) | **28.87%** | **28.95%** (11/38) | **< 0.08%** |
@@ -69,178 +69,72 @@ You can consult the oracle in under 60 seconds with total mathematical fidelity:
 
 ---
 
-### 5. Benchmark Pages in this Repository
-* **`probability-marbles.html`**: Runs simulated draws from the 38-marble pouch.
-* **`probability-all.html`**: Side-by-side empirical benchmark comparing 3 Coins, 38 Marbles, and 49 Yarrow Stalks.
-* **`kinwen_with_changing_lines.py`**: Calculates exact transition probabilities across all 4,096 King Wen hexagram transitions using the 38-object fractional matrix.
-* **`index.html`**: Modern responsive web application supporting the 38-Marble Pouch and 49 Yarrow Stalks, featuring the complete **Richard Wilhelm / Cary F. Baynes** (Princeton University Press) translation, Wilhelm commentaries on judgments and images, deep trigram structural dynamics, a two-level layered flipping interface (Present / Lines / Future stages + Judgment / Image / Trigrams / Both aspects), and relating hexagram (*Zhī Guà*) evolutions.
+## Core Engine & Interpretive Dimensions
 
-This code is free to use. If you like it, you can <a href="https://www.buymeacoffee.com/brianfit">buy me a coffee!</a> (I really like coffee)
+### 1. Nuclear Trigrams Engine (*Hù Guà* · 互卦) & Four Primordial Root Gates
+Beyond manifest surface phenomena, the I-Ching reveals the latent, embryonic potential governing a situation through the **Nuclear Hexagram (*Hù Guà*)**:
+* **Recursive Core Extraction**:
+  * **Lower Nuclear Trigram**: Formed from Lines 2, 3, 4 of the parent hexagram.
+  * **Upper Nuclear Trigram**: Formed from Lines 3, 4, 5 of the parent hexagram.
+* **The 16 Nuclear Hexagram Families**: Although there are 64 hexagrams, there are strictly **only 16 possible nuclear hexagrams**. Every situation belongs structurally to one of these 16 core dynamics.
+* **The Four Primordial Root Gates**: Successive nuclear reduction recursively collapses all 64 hexagrams into **Four Terminal Topological Attractors**:
+  * **Gate 1: #1 The Creative (乾 · Qián)** — Pure Creative Yang & Dynamic Initiative
+  * **Gate 2: #2 The Receptive (坤 · Kūn)** — Pure Receptivity, Devotion & Grounding
+  * **Gate 3: #63 After Completion (既濟 · Jì Jì)** — Peak Order, Dynamic Equilibrium & Balanced Reciprocity
+  * **Gate 4: #64 Before Completion (未濟 · Wèi Jì)** — Primordial Genesis, Infinite Becoming & Open Potential
+* Each reading identifies the Root Gate attractor through clean badge pills.
 
-The javascript here is the core of [a fairly popular app I've written](http://www.brian-fitzgerald.net/i-ching/?github) to consult the I-Ching. This code randomly generates a hexagram of six lines according to a bronze-age methodology of sorting Yarrow Stalks. Here's an overly long explanation of that method and why it's statistically different from the three-coin method of generating hexagrams that most of us learned in the west.
+### 2. The $X \to Y$ Nuclear Transition Matrix
+When changing lines occur, the inner core also transforms:
+* **Visual Side-by-Side Matrix**: Compares **Initial Core (State X)** with **Relating Core (State Y)** in equalized-height cards with top-aligned content baselines.
+* **Active Nuclear Core Lines**: Direct visual highlights identifying which core inner lines (Lines 2, 3, 4, 5) are actively shifting across the transformation.
+* **Dynamic Center Transition Vectors**: Directional indicators detailing exactly which nuclear lines evolve (e.g. `Lines 1, 2, 3, 4 ➔`, `Line 2 ➔`, `Lines 2, 4 ➔`, etc.).
 
-Take 50 stalks. Remove one, set it aside. Randomly separate the remaining 49 stalks into two piles, East and West. Take one stalk from the West heap and hold it between thumb and forefinger of your left hand. Take stalks in groups of four from the East pile, until four or fewer stalks remain. Keep this remainder, place it between the ring and middle finger of the left hand. Take stalks in groups of four from the West pile until four or fewer stalks remain. Keep this remainder, and place it between the middle and forefingers of the left hand.
+### 3. Two-Level Layered Flipping Architecture
+* **Level 1 (Stage Flipping)**: Step smoothly between:
+  * `[ ☯ Present (#X) ]`: Primary Hexagram.
+  * `[ ⚡ Lines (Y) ]`: The Changing Lines operative counsel.
+  * `[ ➔ Future (#Z) ]`: Relating Hexagram (*Zhī Guà*).
+* **Level 2 (Aspect Tabs)**: Inside hexagram cards, switch between:
+  * `[ 📜 Judgment ]`: King Wen oracle text + Wilhelm Commentary on the Judgment.
+  * `[ 🌊 Image ]`: The Great Image verse + Wilhelm Commentary on the Image.
+  * `[ ☯ Trigrams ]`: Dual Trigram polarity breakdown with prominent 42px glyphs, Realm badges (Outer Realm Lines 4–6 vs Inner Realm Lines 1–3), Chinese/Pinyin/Element/Quality attributes, and Wilhelm structural dynamics.
+  * `[ ⚛ Nuclear ]`: Dedicated Nuclear Hexagram breakdown with Root Gate pill, inner trigrams, and the interactive $X \to Y$ Transition Matrix.
 
-Your left hand now holds a sum of stalks equal to 9 or 5, being made up of one of the following possibilities:
+### 4. Definitive Wilhelm / Baynes Translation Standard
+* Complete King Wen judgments, Great Images, and line texts (爻辭, *Yáo Cí*) from the definitive Richard Wilhelm & Cary F. Baynes translation (*Princeton University Press, Bollingen Series XIX*).
+* Full commentaries on judgments and images across all 64 hexagrams.
+* All 384 changing lines plus the two special 7th lines for Hexagram 1 (*All Nines*) and Hexagram 2 (*All Sixes*).
 
- 1+1+3=5
-
- 1+2+2=5
-
- 1+3+1=5
-
- 1+4+4=9
-
-If the number of stalks is nine, a value of 2 is assigned to this counting. If it was five, the number three is assigned. The 9 or 5 stalks are put aside.
-
-The rest of the stalks (40 or 44 by now) are again divided into two piles and counted off as above. The possible outcomes this time are:
-
- 1+1+2=4
-
- 1+2+1=4
-
- 1+3+4=8
-
- 1+4+3=8
-
-This time, an 8 stalk remainder is assigned the number
-
-A 4 stalk remainder receives a 3. The four or eight stalks are set aside, and the remaining 36, 40, 32, or 38 stalks are again divided in two and counted off. The possibilities are again:
-
- 1+1+2=4
-
- 1+2+1=4
-
- 1+3+4=8
-
- 1+4+3=8
-
-And again a remainder of 8 is valued at 2, a remainder of 4 at 3.
-
-From these three operations result the following possibilities:
-
- 2+2+3=7
-
- 2+3+3=8
-
- 2+3+2=7
-
- 2+2+2=6
-
- 3+2+2=7
-
- 3+3+2=8
-
- 3+2+3=8
-
- 3+3+3=9
-
-It is these results which determine whether a line is solid or broken. A 7 meant a strong, solid line. An 8 meant a yielding, broken line. A 9 was considered a strong moving toward yielding line. A 6 was a yielding moving toward strong line.
-
-By repeating the above process six times, a hexagram was built up from the bottom.
-
-Like most westerners exposed to the I-Ching, I was taught the coin method of generating a line, which is far easier than the method above. By this method, three coins are tossed. Heads are worth 2, tails 3. The possibilities were thus:
-
- Head+Head+Head=6
-
- Head+Head+Tail=7
-
- Head+Tail+Tail=8
-
- Tail+Tail+Tail=9
-
-This means, however, a slight difference in probabilities from the yarrow stalk method. The chance of any one coin being head or tail is ALWAYS 50/50. However, the chance of a "Tail" on the first "Toss" in the yarrow stalk method is almost 3 to 1. Recall, the possible results for the first division of 49 stalks was this:
-
- 1+1+3=5 (Value 3)
-
- 1+2+2=5 (Value 3)
-
- 1+3+1=5 (Value 3)
-
- 1+4+4=9 (Value 2)
-
-Of four possible outcomes, three of them result in a 5, only one in a 9. This means, in effect, that when we look to the lines, those generated by a 2 in the first place are less likely to occur than those that start with a 3:
-
- Less likely:
-
- 2+2+3=7 (Strong)
-
- 2+3+3=8 (Yielding)
-
- 2+3+2=7 (Strong)
-
- 2+2+2=6 (Yielding Changing)
-
- More likely:
-
- 3+2+2=7 (Strong)
-
- 3+3+2=8 (Yielding)
-
- 3+2+3=8 (Yielding)
-
- 3+3+3=9 (Strong Changing)
-
-It therefore makes sense that unchanging Yielding lines are slightly more likely to show up than unchanging Strong lines, and that a yielding changing line is the least likely all possible combinations to turn up. This is because unlike the regular yielding and strong lines, the changing lines are each generated by only one possible combination of stalks. The yielding, changing combination, because it begins with 2, is therefore heavily disfavored over the strong changing line.
-
-Which is all just to say that the coin method does not hold the same built-in bias that the yarrow stalk method has. Surely note must have been made by the ancients that a 6 was a relatively rare occurrence indeed. Certainly, anyone in frequent consultation with the book by the yarrow stalk method would have noted the anomaly. I noticed the reticence of 6 after many many runs of the developing program and thought my coding was somehow flawed. But no! Perseverance furthers. No Blame.
-
-Update: Wikipedia sums up all that blather very succinctly:
-
-<table class="wikitable sortable">
-<tr>
-<th>Number</th>
-<th colspan="2">Yarrow stick probability</th>
-<th colspan="2">Three coin probability</th>
-<th>YinYang</th>
-<th>Signification</th>
-<th>Symbol</th>
-</tr>
-<tr>
-<td>6</td>
-<td>1/16</td>
-<td rowspan="2">8/16</td>
-<td>2/16</td>
-<td rowspan="2">8/16</td>
-<td>old yin</td>
-<td>yin changing into yang</td>
-<td style="text-align:center;"><s><b>---</b></s><b>x</b><s><b>---</b></s></td>
-</tr>
-<tr>
-<td>8</td>
-<td>7/16</td>
-<td>6/16</td>
-<td>young yin</td>
-<td>yin unchanging</td>
-<td style="text-align:center;"><s><b>---</b></s>&#160;&#160;<s><b>---</b></s></td>
-</tr>
-<tr>
-<td>9</td>
-<td>3/16</td>
-<td rowspan="2">8/16</td>
-<td>2/16</td>
-<td rowspan="2">8/16</td>
-<td>old yang</td>
-<td>yang changing into yin</td>
-<td style="text-align:center;"><s><b>---o---</b></s></td>
-</tr>
-<tr>
-<td>7</td>
-<td>5/16</td>
-<td>6/16</td>
-<td>young yang</td>
-<td>yang unchanging</td>
-<td style="text-align:center;"><s><b>--------</b></s></td>
-</tr>
-</table>
+### 5. Segmented 5-Tab Lore Drawer
+1. **📜 Provenance & Tradition**: King Wen, Duke of Zhou, Confucius's *Ten Wings*, Zhu Xi, Richard Wilhelm, and C.G. Jung.
+2. **🌿 Mathematical Foundations**: Gardner's 1974 model vs. Kennedy's 2006 Revised Algorithm and the 38-Marble global optimum (< 0.09% error).
+3. **⚛ The Four Root Gates & Transition Matrix**: Recursive nuclear reduction, 16 nuclear families, 4 root attractors, and core transition mechanics.
+4. **☯ Structural Trigrams**: Outer Realm (Lines 4–6) vs. Inner Realm (Lines 1–3), lower/upper trigram dynamics, and the Eight Primordial Elements.
+5. **📚 Classical Sources & Bibliography**: Citations for *Zuǒ Zhuàn* (4th c. BCE), *Dà Zhuàn* (Warring States), Zheng Xuan (127–200 CE), Yu Fan (164–233 CE), Wilhelm/Baynes (1950), and Kennedy (2006).
 
 ---
 
-## References
+## Benchmark Suite & Applications in this Repository
+
+* **`index.html`**: Comprehensive responsive web application supporting both the 38-Marble Pouch and 49 Yarrow Stalks, featuring the complete Wilhelm/Baynes translation, Wilhelm commentaries, trigram dynamics, two-level layered flipping interface, nuclear transition matrix, and clipboard report export.
+* **`probability-marbles.html`**: Interactive simulator executing continuous draws from the 38-marble pouch to verify real-time convergence on classical yarrow probabilities.
+* **`probability-all.html`**: Side-by-side empirical benchmark comparing the 3 Coins Method, 38 Marbles Pouch, and 49 Physical Yarrow Stalks.
+* **`kinwen_with_changing_lines.py`**: Python engine calculating exact transition probabilities across all 4,096 King Wen hexagram transitions using the 38-object fractional matrix.
+
+---
+
+## Classical & Academic References
 
 * **Kennedy, Andrew** (2006). *Briefing Leaders: A new look at the I Ching and the Tao De Ching*. Gravity Publishing. ISBN: 978-0955355608.
-* **Gardner, Martin** (1974). "Mathematical Games: The Combinatorial Properties of the I Ching." *Scientific American*, 230(1), 108–113.
-* **Zhu Xi** (1186 CE). *Yixue Qimeng* (易學啟蒙, *Introduction to the Study of the I Ching*).
 * **Wilhelm, Richard & Baynes, Cary F.** (1950/1967). *The I Ching or Book of Changes*. Foreword by C.G. Jung. Princeton University Press (Bollingen Series XIX). ISBN: 978-0691097503.
+* **Zhu Xi** (1186 CE). *Yixue Qimeng* (易學啟蒙, *Introduction to the Study of the I Ching*).
+* **Gardner, Martin** (1974). "Mathematical Games: The Combinatorial Properties of the I Ching." *Scientific American*, 230(1), 108–113.
+* **Zuo Qiuming** (4th c. BCE). *Zuǒ Zhuàn* (左傳, *The Zuo Tradition / Commentary on the Spring and Autumn Annals*).
+* **Zheng Xuan** (127–200 CE) & **Yu Fan** (164–233 CE). *Han Dynasty Commentaries on the Changes and Hù Tǐ (互體)*.
 
-If you enjoyed this, you can <a href="https://www.buymeacoffee.com/brianfit">buy me a coffee!</a> (Did I mention I really like coffee)
+---
+
+## License
+
+MIT License. Copyright (c) 2026 Matthew Hudson.
