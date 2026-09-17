@@ -1618,6 +1618,12 @@
             html += '    <p style="margin:0; white-space:pre-line;">' + sec.paragraphs[4].replace('The Three Levels of Changing Line Impact on the Core (X ➔ Y):\n', '') + '</p>';
             html += '  </div>';
           }
+          if (sec.paragraphs[5]) {
+            html += '  <div style="background: rgba(0,0,0,0.22); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+            html += '    <div style="font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 6px;">Classical Sources & Scholarly Citations:</div>';
+            html += '    <div style="font-size: 0.85rem; line-height: 1.5; color: var(--text); white-space: pre-line;">' + sec.paragraphs[5].replace('Classical Sources & Scholarly Citations:\n', '') + '</div>';
+            html += '  </div>';
+          }
         } else if (sec.id === 'protocol') {
           html += '  <div style="background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 8px; padding: 12px; margin: 12px 0;">';
           html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.88rem; margin-bottom: 4px;">Sincerity of Intent (誠 · Chéng)</div>';
@@ -1636,6 +1642,12 @@
           html += '    <div style="font-weight: 700; color: var(--accent); font-size: 0.85rem; margin-bottom: 4px;">C.G. Jung & Synchronicity:</div>';
           html += '    <p style="margin:0;">' + sec.paragraphs[2] + '</p>';
           html += '  </div>';
+          if (sec.paragraphs[3]) {
+            html += '  <div style="background: rgba(0,0,0,0.22); border: 1px solid var(--border); border-radius: 8px; padding: 12px; margin: 12px 0;">';
+            html += '    <div style="font-weight: 700; color: var(--gold); font-size: 0.85rem; margin-bottom: 6px;">Authoritative Editions & Scholarly Bibliography:</div>';
+            html += '    <div style="font-size: 0.85rem; line-height: 1.5; color: var(--text); white-space: pre-line;">' + sec.paragraphs[3].replace('Authoritative Editions & Scholarly Bibliography:\n', '') + '</div>';
+            html += '  </div>';
+          }
         }
 
         html += '</div>';
