@@ -1182,12 +1182,17 @@
             <li><strong>The Rule of Hexagram 4 (Youthful Folly / 蒙):</strong> <em>"The first consultation informs; asking repeatedly out of dissatisfaction is importunity. If importunate, I give no information"</em> (初筮告，再三瀆，瀆則不告). Accept the reading received with meditative reflection rather than re-casting until you hear what you wanted to hear.</li>
           </ul>
         </div>
+
+        <div class="lore-section">
+          <h3>8. Classical Translation & Commentary (Wilhelm / Baynes)</h3>
+          <p>The judgments, images, line texts (爻辭, <em>Yáo Cí</em>), and commentary in this oracle are drawn from the Richard Wilhelm translation, translated from German into English by Cary F. Baynes, with a renowned foreword by C.G. Jung (Princeton University Press, Bollingen Series XIX). First published in English in 1950, this edition remains the international gold standard for philosophical depth, psychological insight, and scholarly fidelity.</p>
+        </div>
       </section>
     </div>
   </main>
 
   <footer>
-    <p>Authentic 50 Yarrow Stalks & 38 Marbles Pouch (Andrew Kennedy's Revised Yarrow Algorithm) · Classical Wilhelm / Baynes Translation</p>
+    <p>Authentic 50 Yarrow Stalks & 38 Marbles Pouch (Andrew Kennedy's Revised Yarrow Algorithm) · Richard Wilhelm / Cary F. Baynes Translation (Princeton University Press)</p>
     <p style="margin-top: 4px;">Shortcut: Press <kbd style="background:#222c3d;padding:2px 6px;border-radius:4px;border:1px solid #334155;">Space</kbd> to cast next line · Press <kbd style="background:#222c3d;padding:2px 6px;border-radius:4px;border:1px solid #334155;">R</kbd> to reset.</p>
   </footer>
 
@@ -1515,6 +1520,35 @@
         html += '  </div>';
         html += '</div>';
 
+        // Changing Lines Card (Operative Counsel / Yáo Cí)
+        if (consultation.hasChangingLines && consultation.changingLineDetails && consultation.changingLineDetails.length > 0) {
+          html += '<div class="hex-card changing-lines-card" style="grid-column: 1 / -1; border-color: rgba(245, 158, 11, 0.4); background: rgba(245, 158, 11, 0.05);">';
+          html += '  <div class="hex-header" style="margin-bottom: 12px;">';
+          html += '    <div class="hex-glyph" style="color: var(--gold); font-size: 2rem;">⚡</div>';
+          html += '    <div class="hex-titles">';
+          html += '      <h3 style="color: var(--gold);">The Changing Lines · 爻辭 (Operative Counsel)</h3>';
+          html += '      <div class="pinyin" style="color: var(--text-muted);">Lines in active motion, revealing specific advice for the turning point:</div>';
+          html += '    </div>';
+          html += '  </div>';
+
+          html += '  <div style="display: flex; flex-direction: column; gap: 12px;">';
+          for (var cl = 0; cl < consultation.changingLineDetails.length; cl++) {
+            var cld = consultation.changingLineDetails[cl];
+            html += '    <div style="background: rgba(0, 0, 0, 0.25); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 8px; padding: 12px;">';
+            html += '      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">';
+            html += '        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--gold);"></span>';
+            html += '        <strong style="color: var(--text); font-size: 0.95rem;">' + (cld.line && cld.line <= 6 ? ('Line ' + cld.line + ' — ') : '') + (cld.name || '') + '</strong>';
+            html += '      </div>';
+            html += '      <div style="color: var(--text); font-weight: 600; font-size: 0.92rem; line-height: 1.4; margin-bottom: 6px; white-space: pre-line;">' + cld.text + '</div>';
+            if (cld.comments) {
+              html += '      <div style="color: var(--text-muted); font-size: 0.85rem; font-style: italic; line-height: 1.35; margin-top: 4px;">Commentary: ' + cld.comments + '</div>';
+            }
+            html += '    </div>';
+          }
+          html += '  </div>';
+          html += '</div>';
+        }
+
         // Transformed Card (The Future / Zhī Guà)
         if (hasFuture) {
           var t = consultation.transformed;
@@ -1549,6 +1583,10 @@
           html += '</div>';
         }
 
+        html += '<div style="text-align:center;margin-top:20px;margin-bottom:8px;font-size:0.8rem;color:var(--text-muted);font-style:italic;">';
+        html += '  📖 Translation & Commentary: Richard Wilhelm / Cary F. Baynes · Princeton University Press (Bollingen Series XIX)';
+        html += '</div>';
+
         resultsSection.innerHTML = html;
       }
 
@@ -1557,13 +1595,10 @@
 
         if (state.castLines.length === 0) {
           state.inquiryText = questionInput.value.trim();
-          if (state.inquiryText !== '') {
-            questionInput.style.display = 'none';
-            inquiryQuote.textContent = '“' + state.inquiryText + '”';
-            inquiryQuote.style.display = 'block';
-          } else {
-            questionInput.style.display = 'none';
-            inquiryQuote.style.display = 'none';
+          questionInput.readOnly = true;
+          questionInput.disabled = true;
+          if (state.inquiryText === '') {
+            questionInput.placeholder = '(Silent contemplation · Focus of intent)';
           }
         }
 
@@ -1644,9 +1679,9 @@
         state.inquiryText = '';
 
         questionInput.value = '';
-        questionInput.style.display = 'block';
-        inquiryQuote.style.display = 'none';
-        inquiryQuote.textContent = '';
+        questionInput.readOnly = false;
+        questionInput.disabled = false;
+        questionInput.placeholder = 'Formulate your question & hold it in mind throughout...';
         inquiryGuide.textContent = 'The classics teach: quiet your mind, formulate what you seek counsel on, and hold it firmly in thought through all six draws.';
 
         for (var i = 1; i <= 6; i++) {
@@ -1684,7 +1719,8 @@
         if (!state.consultation || !state.consultation.primary) return;
         var p = state.consultation.primary;
         var methodLabel = (state.method === 'yarrow') ? "Authentic 50 Yarrow Stalks (Andrew Kennedy's Revised Yarrow Algorithm)" : "38 Marbles Pouch (Andrew Kennedy's Revised Yarrow Algorithm)";
-        var text = '☯ I-Ching Oracle Reading (' + methodLabel + ') ☯\n\n';
+        var text = '☯ I-Ching Oracle Reading (' + methodLabel + ') ☯\n';
+        text += 'Translation & Commentary: Richard Wilhelm / Cary F. Baynes (Princeton University Press)\n\n';
         if (state.inquiryText && state.inquiryText.trim() !== '') {
           text += 'Inquiry: "' + state.inquiryText.trim() + '"\n\n';
         }
@@ -1693,13 +1729,29 @@
         text += 'The Judgment:\n' + p.judgment + '\n\n';
         text += 'The Image:\n' + p.image + '\n\n';
 
-        if (state.consultation.hasChangingLines && state.consultation.transformed) {
+        if (state.consultation.hasChangingLines) {
           var t = state.consultation.transformed;
           text += 'Changing Lines: ' + state.consultation.changingLines.map(function(n) { return 'Line ' + n; }).join(', ') + '\n\n';
-          text += 'Relating Hexagram (Future / Evolved): #' + t.number + ' ' + t.chinese + ' (' + t.pinyin + ') — ' + t.english + ' ' + t.unicode + '\n';
-          text += 'Trigrams: ' + t.upperTrigram.name + ' (' + t.upperTrigram.symbol + ') above ' + t.lowerTrigram.name + ' (' + t.lowerTrigram.symbol + ')\n\n';
-          text += 'The Judgment:\n' + t.judgment + '\n\n';
-          text += 'The Image:\n' + t.image + '\n\n';
+
+          if (state.consultation.changingLineDetails && state.consultation.changingLineDetails.length > 0) {
+            text += 'The Lines (Operative Counsel):\n';
+            for (var cd = 0; cd < state.consultation.changingLineDetails.length; cd++) {
+              var cld = state.consultation.changingLineDetails[cd];
+              text += '  Line ' + cld.line + ' — ' + cld.name + ':\n';
+              text += '  "' + cld.text.replace(/\n/g, ' ') + '"\n';
+              if (cld.comments) {
+                text += '  Commentary: ' + cld.comments.replace(/\n/g, ' ') + '\n';
+              }
+              text += '\n';
+            }
+          }
+
+          if (t) {
+            text += 'Relating Hexagram (Future / Evolved): #' + t.number + ' ' + t.chinese + ' (' + t.pinyin + ') — ' + t.english + ' ' + t.unicode + '\n';
+            text += 'Trigrams: ' + t.upperTrigram.name + ' (' + t.upperTrigram.symbol + ') above ' + t.lowerTrigram.name + ' (' + t.lowerTrigram.symbol + ')\n\n';
+            text += 'The Judgment:\n' + t.judgment + '\n\n';
+            text += 'The Image:\n' + t.image + '\n\n';
+          }
         }
 
         text += 'Lines Cast (Bottom Line 1 to Top Line 6):\n';

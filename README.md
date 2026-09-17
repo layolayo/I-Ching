@@ -73,7 +73,7 @@ You can consult the oracle in under 60 seconds with total mathematical fidelity:
 * **`probability-marbles.html`**: Runs simulated draws from the 38-marble pouch.
 * **`probability-all.html`**: Side-by-side empirical benchmark comparing 3 Coins, 38 Marbles, and 49 Yarrow Stalks.
 * **`kinwen_with_changing_lines.py`**: Calculates exact transition probabilities across all 4,096 King Wen hexagram transitions using the 38-object fractional matrix.
-* **`index.html`**: Modern responsive web application supporting the 38-Marble Pouch and 49 Yarrow Stalks.
+* **`index.html`**: Modern responsive web application supporting the 38-Marble Pouch and 49 Yarrow Stalks, featuring the complete **Richard Wilhelm / Cary F. Baynes** (Princeton University Press) translation, changing line texts (爻辭, *Yáo Cí*), Wilhelm commentary, and relating hexagram (*Zhī Guà*) evolutions.
 
 This code is free to use. If you like it, you can <a href="https://www.buymeacoffee.com/brianfit">buy me a coffee!</a> (I really like coffee)
 
@@ -241,5 +241,6 @@ Update: Wikipedia sums up all that blather very succinctly:
 * **Kennedy, Andrew** (2006). *Briefing Leaders: A new look at the I Ching and the Tao De Ching*. Gravity Publishing. ISBN: 978-0955355608.
 * **Gardner, Martin** (1974). "Mathematical Games: The Combinatorial Properties of the I Ching." *Scientific American*, 230(1), 108–113.
 * **Zhu Xi** (1186 CE). *Yixue Qimeng* (易學啟蒙, *Introduction to the Study of the I Ching*).
+* **Wilhelm, Richard & Baynes, Cary F.** (1950/1967). *The I Ching or Book of Changes*. Foreword by C.G. Jung. Princeton University Press (Bollingen Series XIX). ISBN: 978-0691097503.
 
 If you enjoyed this, you can <a href="https://www.buymeacoffee.com/brianfit">buy me a coffee!</a> (Did I mention I really like coffee)
